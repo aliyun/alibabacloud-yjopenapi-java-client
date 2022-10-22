@@ -23,13 +23,13 @@ public class TryToGetSlotFormsStartParam implements Serializable {
   private String pictureQuality = null;
 
 
-  private Integer keepAlive = null;
+  private Long keepAlive = null;
 
 
-  private Integer keepDisconnectAlive = null;
+  private Long keepDisconnectAlive = null;
 
 
-  private Integer keepNoPlayAlive = null;
+  private Long keepNoPlayAlive = null;
 
 
   private String deviceBrand = null;
@@ -90,7 +90,7 @@ public class TryToGetSlotFormsStartParam implements Serializable {
     this.pictureQuality = pictureQuality;
   }
 
-  public TryToGetSlotFormsStartParam keepAlive(Integer keepAlive) {
+  public TryToGetSlotFormsStartParam keepAlive(Long keepAlive) {
     this.keepAlive = keepAlive;
     return this;
   }
@@ -99,15 +99,15 @@ public class TryToGetSlotFormsStartParam implements Serializable {
    * 控制游戏运行时长
    * @return keepAlive
   **/
-  public Integer getKeepAlive() {
+  public Long getKeepAlive() {
     return keepAlive;
   }
 
-  public void setKeepAlive(Integer keepAlive) {
+  public void setKeepAlive(Long keepAlive) {
     this.keepAlive = keepAlive;
   }
 
-  public TryToGetSlotFormsStartParam keepDisconnectAlive(Integer keepDisconnectAlive) {
+  public TryToGetSlotFormsStartParam keepDisconnectAlive(Long keepDisconnectAlive) {
     this.keepDisconnectAlive = keepDisconnectAlive;
     return this;
   }
@@ -116,15 +116,15 @@ public class TryToGetSlotFormsStartParam implements Serializable {
    * 游戏中设备掉线后会话保活时长
    * @return keepDisconnectAlive
   **/
-  public Integer getKeepDisconnectAlive() {
+  public Long getKeepDisconnectAlive() {
     return keepDisconnectAlive;
   }
 
-  public void setKeepDisconnectAlive(Integer keepDisconnectAlive) {
+  public void setKeepDisconnectAlive(Long keepDisconnectAlive) {
     this.keepDisconnectAlive = keepDisconnectAlive;
   }
 
-  public TryToGetSlotFormsStartParam keepNoPlayAlive(Integer keepNoPlayAlive) {
+  public TryToGetSlotFormsStartParam keepNoPlayAlive(Long keepNoPlayAlive) {
     this.keepNoPlayAlive = keepNoPlayAlive;
     return this;
   }
@@ -133,11 +133,11 @@ public class TryToGetSlotFormsStartParam implements Serializable {
    * 游戏中无操作时会话保活时长
    * @return keepNoPlayAlive
   **/
-  public Integer getKeepNoPlayAlive() {
+  public Long getKeepNoPlayAlive() {
     return keepNoPlayAlive;
   }
 
-  public void setKeepNoPlayAlive(Integer keepNoPlayAlive) {
+  public void setKeepNoPlayAlive(Long keepNoPlayAlive) {
     this.keepNoPlayAlive = keepNoPlayAlive;
   }
 

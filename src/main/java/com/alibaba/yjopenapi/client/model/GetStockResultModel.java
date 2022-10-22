@@ -38,7 +38,7 @@ public class GetStockResultModel implements Serializable {
   private String gameId = null;
 
 
-  private String currentTime = null;
+  private Long currentTime = null;
 
 
   private Integer quotaTotal = null;
@@ -155,7 +155,7 @@ public class GetStockResultModel implements Serializable {
     this.gameId = gameId;
   }
 
-  public GetStockResultModel currentTime(String currentTime) {
+  public GetStockResultModel currentTime(Long currentTime) {
     this.currentTime = currentTime;
     return this;
   }
@@ -164,11 +164,11 @@ public class GetStockResultModel implements Serializable {
    * 当前毫秒时间戳
    * @return currentTime
   **/
-  public String getCurrentTime() {
+  public Long getCurrentTime() {
     return currentTime;
   }
 
-  public void setCurrentTime(String currentTime) {
+  public void setCurrentTime(Long currentTime) {
     this.currentTime = currentTime;
   }
 

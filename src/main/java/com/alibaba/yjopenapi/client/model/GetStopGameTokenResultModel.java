@@ -23,7 +23,7 @@ public class GetStopGameTokenResultModel implements Serializable {
   private String token = null;
 
 
-  private Integer expireTime = null;
+  private Long expireTime = null;
 
 
   private String code = null;
@@ -69,7 +69,7 @@ public class GetStopGameTokenResultModel implements Serializable {
     this.token = token;
   }
 
-  public GetStopGameTokenResultModel expireTime(Integer expireTime) {
+  public GetStopGameTokenResultModel expireTime(Long expireTime) {
     this.expireTime = expireTime;
     return this;
   }
@@ -78,11 +78,11 @@ public class GetStopGameTokenResultModel implements Serializable {
    * 当前token失效时间
    * @return expireTime
   **/
-  public Integer getExpireTime() {
+  public Long getExpireTime() {
     return expireTime;
   }
 
-  public void setExpireTime(Integer expireTime) {
+  public void setExpireTime(Long expireTime) {
     this.expireTime = expireTime;
   }
 
