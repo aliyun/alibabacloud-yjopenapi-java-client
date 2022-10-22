@@ -51,9 +51,9 @@ configuration
 
 try {
     // {{Api}},{{Method}},{{Param}},{{Result}} is placeholder, take a look at Explain Of Usage Placeholder
-    TokenApi api = new {{Api}}(new ApiClient(), configuration);
+    {{Api}} api = new {{Api}}(new ApiClient(), configuration);
     // OpenAPI result
-    GetTripleResult result = api. {{Method}}({{Param}});
+    {{Result}} result = api.{{Method}}({{Param}});
 
     // OpenAPI result with header
     ApiResponse<{{Result}}> tripleWithHttpInfo = api. {{Method}}WithHttpInfo();
