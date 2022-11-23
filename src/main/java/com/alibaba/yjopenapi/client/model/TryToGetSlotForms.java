@@ -2,8 +2,6 @@
  * 
  * YuanJing OpenAPI SDK
  *
- * OpenAPI spec version: 1.0.20221015-beta
- *
  */
 
 package com.alibaba.yjopenapi.client.model;

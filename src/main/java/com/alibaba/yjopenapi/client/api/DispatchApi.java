@@ -2,8 +2,6 @@
  * 
  * YuanJing OpenAPI SDK
  *
- * OpenAPI spec version: 1.0.20221015-beta
- *
  */
 
 package com.alibaba.yjopenapi.client.api;
@@ -11,6 +9,7 @@ package com.alibaba.yjopenapi.client.api;
 import java.io.IOException;
 
 import com.alibaba.yjopenapi.client.model.BatchStopGameResult;
+import com.alibaba.yjopenapi.client.model.GetGameConcurrencyResult;
 import com.alibaba.yjopenapi.client.model.GetStockResult;
 import com.alibaba.yjopenapi.client.model.GetStopGameTokenResult;
 import com.alibaba.yjopenapi.client.model.StopGameResult;
@@ -155,6 +154,101 @@ public class DispatchApi {
 
         com.squareup.okhttp.Call call = batchStopGameValidateBeforeCall(varForms);
         apiClient.executeAsync(call, BatchStopGameResult.class, callback);
+        return call;
+    }
+    /**
+     * Build call for getGameConcurrency
+     * @param varForms GetGameConcurrencyForms
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getGameConcurrencyCall(GetGameConcurrencyForms varForms) throws ApiException {
+        
+        // create path and map variables
+        String localVarPath = "/getGameConcurrency";
+
+        Map<String, String> localVarQueryParams = new HashMap<String, String>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        localVarFormParams.put("gameId", varForms.getGameId());
+        localVarFormParams.put("appKey", varForms.getAppKey());
+        if (varForms.getQueryQueueConcurrency() != null) {
+            localVarFormParams.put("queryQueueConcurrency", varForms.getQueryQueueConcurrency());
+        }
+        if (varForms.getQueueUserLevel() != null) {
+            localVarFormParams.put("queueUserLevel", varForms.getQueueUserLevel());
+        }
+
+        final List<String> localVarAccepts = Arrays.asList(
+            "application/json"
+        );
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final List<String> localVarContentTypes = Arrays.asList(
+            "application/x-www-form-urlencoded"
+        );
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String path = configuration.getScheme() + "://" + configuration.getHost() + localVarPath;
+        return apiClient.buildCall(path, "POST", localVarQueryParams, localVarHeaderParams, localVarFormParams, configuration);
+    }
+    
+    private com.squareup.okhttp.Call getGameConcurrencyValidateBeforeCall(GetGameConcurrencyForms varForms) throws ApiException {
+        // verify the required parameter 'gameId' is set
+        if (varForms.getGameId() == null) {
+            throw new ApiException("Missing the required parameter 'gameId' when calling getGameConcurrency(Async)");
+        }
+        // verify the required parameter 'appKey' is set
+        if (varForms.getAppKey() == null) {
+            throw new ApiException("Missing the required parameter 'appKey' when calling getGameConcurrency(Async)");
+        }
+        
+        com.squareup.okhttp.Call call = getGameConcurrencyCall(varForms);
+        return call;
+    }
+
+    /**
+     * 
+     * 调用GetGameConcurrency获取游戏当前并发数
+     * @param varForms GetGameConcurrencyForms
+     * @return GetGameConcurrencyResult
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public GetGameConcurrencyResult getGameConcurrency(GetGameConcurrencyForms varForms) throws ApiException {
+        ApiResponse<GetGameConcurrencyResult> resp = getGameConcurrencyWithHttpInfo(varForms);
+        return resp.getData();
+    }
+
+    /**
+     * 
+     * 调用GetGameConcurrency获取游戏当前并发数
+     * @param varForms GetGameConcurrencyForms
+     * @return ApiResponse&lt;GetGameConcurrencyResult&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<GetGameConcurrencyResult> getGameConcurrencyWithHttpInfo(GetGameConcurrencyForms varForms) throws ApiException {
+        com.squareup.okhttp.Call call = getGameConcurrencyValidateBeforeCall(varForms);
+        return apiClient.execute(call, GetGameConcurrencyResult.class);
+    }
+
+    /**
+     *  (asynchronously)
+     * 调用GetGameConcurrency获取游戏当前并发数
+     * @param varForms GetGameConcurrencyForms
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getGameConcurrencyAsync(GetGameConcurrencyForms varForms, final ApiCallback<GetGameConcurrencyResult> callback) throws ApiException {
+
+        com.squareup.okhttp.Call call = getGameConcurrencyValidateBeforeCall(varForms);
+        apiClient.executeAsync(call, GetGameConcurrencyResult.class, callback);
         return call;
     }
     /**
