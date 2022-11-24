@@ -2,8 +2,6 @@
  * 
  * YuanJing OpenAPI SDK
  *
- * OpenAPI spec version: 1.0.20221015-beta
- *
  */
 
 package com.alibaba.yjopenapi.client.api;
@@ -18,14 +16,7 @@ import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLConnection;
 import java.net.URLEncoder;
-import java.security.GeneralSecurityException;
-import java.security.KeyStore;
 import java.security.MessageDigest;
-import java.security.SecureRandom;
-import java.security.cert.Certificate;
-import java.security.cert.CertificateException;
-import java.security.cert.CertificateFactory;
-import java.security.cert.X509Certificate;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -46,10 +37,6 @@ public class ApiClient {
 
     private Map<String, String> defaultHeaderMap = new HashMap<String, String>();
 
-    private InputStream sslCaCert;
-    private boolean verifyingSsl;
-    private KeyManager[] keyManagers;
-
     private OkHttpClient httpClient;
 
     /*
@@ -57,8 +44,6 @@ public class ApiClient {
      */
     public ApiClient() {
         httpClient = new OkHttpClient();
-
-        verifyingSsl = true;
 
     }
 
@@ -99,68 +84,6 @@ public class ApiClient {
      */
     public ApiClient setHttpClient(OkHttpClient httpClient) {
         this.httpClient = httpClient;
-        return this;
-    }
-
-    /**
-     * True if isVerifyingSsl flag is on
-     *
-     * @return True if isVerifySsl flag is on
-     */
-    public boolean isVerifyingSsl() {
-        return verifyingSsl;
-    }
-
-    /**
-     * Configure whether to verify certificate and hostname when making https requests.
-     * Default to true.
-     * NOTE: Do NOT set to false in production code, otherwise you would face multiple types of cryptographic attacks.
-     *
-     * @param verifyingSsl True to verify TLS/SSL connection
-     * @return ApiClient
-     */
-    public ApiClient setVerifyingSsl(boolean verifyingSsl) {
-        this.verifyingSsl = verifyingSsl;
-        applySslSettings();
-        return this;
-    }
-
-    /**
-     * Get SSL CA cert.
-     *
-     * @return Input stream to the SSL CA cert
-     */
-    public InputStream getSslCaCert() {
-        return sslCaCert;
-    }
-
-    /**
-     * Configure the CA certificate to be trusted when making https requests.
-     * Use null to reset to default.
-     *
-     * @param sslCaCert input stream for SSL CA cert
-     * @return ApiClient
-     */
-    public ApiClient setSslCaCert(InputStream sslCaCert) {
-        this.sslCaCert = sslCaCert;
-        applySslSettings();
-        return this;
-    }
-
-    public KeyManager[] getKeyManagers() {
-        return keyManagers;
-    }
-
-    /**
-     * Configure client keys to use for authorization in an SSL session.
-     * Use null to reset to default.
-     *
-     * @param managers The KeyManagers to use
-     * @return ApiClient
-     */
-    public ApiClient setKeyManagers(KeyManager[] managers) {
-        this.keyManagers = managers;
-        applySslSettings();
         return this;
     }
 
@@ -730,71 +653,6 @@ public class ApiClient {
             formBuilder.add(param.getKey(), parameterToString(param.getValue()));
         }
         return formBuilder.build();
-    }
-
-    /**
-     * Apply SSL related settings to httpClient according to the current values of
-     * verifyingSsl and sslCaCert.
-     */
-    private void applySslSettings() {
-        try {
-            TrustManager[] trustManagers = null;
-            HostnameVerifier hostnameVerifier = null;
-            if (!verifyingSsl) {
-                TrustManager trustAll = new X509TrustManager() {
-                    @Override
-                    public void checkClientTrusted(X509Certificate[] chain, String authType) throws CertificateException {}
-                    @Override
-                    public void checkServerTrusted(X509Certificate[] chain, String authType) throws CertificateException {}
-                    @Override
-                    public X509Certificate[] getAcceptedIssuers() { return null; }
-                };
-                SSLContext sslContext = SSLContext.getInstance("TLS");
-                trustManagers = new TrustManager[]{ trustAll };
-                hostnameVerifier = new HostnameVerifier() {
-                    @Override
-                    public boolean verify(String hostname, SSLSession session) { return true; }
-                };
-            } else if (sslCaCert != null) {
-                // Any password will work.
-                char[] password = null;
-                CertificateFactory certificateFactory = CertificateFactory.getInstance("X.509");
-                Collection<? extends Certificate> certificates = certificateFactory.generateCertificates(sslCaCert);
-                if (certificates.isEmpty()) {
-                    throw new IllegalArgumentException("expected non-empty set of trusted certificates");
-                }
-                KeyStore caKeyStore = newEmptyKeyStore(password);
-                int index = 0;
-                for (Certificate certificate : certificates) {
-                    String certificateAlias = "ca" + Integer.toString(index++);
-                    caKeyStore.setCertificateEntry(certificateAlias, certificate);
-                }
-                TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
-                trustManagerFactory.init(caKeyStore);
-                trustManagers = trustManagerFactory.getTrustManagers();
-            }
-
-            if (keyManagers != null || trustManagers != null) {
-                SSLContext sslContext = SSLContext.getInstance("TLS");
-                sslContext.init(keyManagers, trustManagers, new SecureRandom());
-                httpClient.setSslSocketFactory(sslContext.getSocketFactory());
-            } else {
-                httpClient.setSslSocketFactory(null);
-            }
-            httpClient.setHostnameVerifier(hostnameVerifier);
-        } catch (GeneralSecurityException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    private KeyStore newEmptyKeyStore(char[] password) throws GeneralSecurityException {
-        try {
-            KeyStore keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
-            keyStore.load(null, password);
-            return keyStore;
-        } catch (IOException e) {
-            throw new AssertionError(e);
-        }
     }
 
     private static String join(List<String> array, String separator) {
