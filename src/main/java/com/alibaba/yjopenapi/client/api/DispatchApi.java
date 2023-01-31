@@ -12,6 +12,7 @@ import com.alibaba.yjopenapi.client.model.BatchStopGameResult;
 import com.alibaba.yjopenapi.client.model.GetGameConcurrencyResult;
 import com.alibaba.yjopenapi.client.model.GetStockResult;
 import com.alibaba.yjopenapi.client.model.GetStopGameTokenResult;
+import com.alibaba.yjopenapi.client.model.QuerySessionStatusResult;
 import com.alibaba.yjopenapi.client.model.StopGameResult;
 import com.alibaba.yjopenapi.client.model.TryToGetSlotFormsStartParam;
 import com.alibaba.yjopenapi.client.model.TryToGetSlotResult;
@@ -430,6 +431,95 @@ public class DispatchApi {
 
         com.squareup.okhttp.Call call = getStopGameTokenValidateBeforeCall(varForms);
         apiClient.executeAsync(call, GetStopGameTokenResult.class, callback);
+        return call;
+    }
+    /**
+     * Build call for querySessionStatus
+     * @param varForms QuerySessionStatusForms
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call querySessionStatusCall(QuerySessionStatusForms varForms) throws ApiException {
+        
+        // create path and map variables
+        String localVarPath = "/querySessionStatus";
+
+        Map<String, String> localVarQueryParams = new HashMap<String, String>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        localVarFormParams.put("gameSession", varForms.getGameSession());
+        localVarFormParams.put("appKey", varForms.getAppKey());
+
+        final List<String> localVarAccepts = Arrays.asList(
+            "application/json"
+        );
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final List<String> localVarContentTypes = Arrays.asList(
+            "application/x-www-form-urlencoded"
+        );
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String path = configuration.getScheme() + "://" + configuration.getHost() + localVarPath;
+        return apiClient.buildCall(path, "POST", localVarQueryParams, localVarHeaderParams, localVarFormParams, configuration);
+    }
+    
+    private com.squareup.okhttp.Call querySessionStatusValidateBeforeCall(QuerySessionStatusForms varForms) throws ApiException {
+        // verify the required parameter 'gameSession' is set
+        if (varForms.getGameSession() == null) {
+            throw new ApiException("Missing the required parameter 'gameSession' when calling querySessionStatus(Async)");
+        }
+        // verify the required parameter 'appKey' is set
+        if (varForms.getAppKey() == null) {
+            throw new ApiException("Missing the required parameter 'appKey' when calling querySessionStatus(Async)");
+        }
+        
+        com.squareup.okhttp.Call call = querySessionStatusCall(varForms);
+        return call;
+    }
+
+    /**
+     * 
+     * 查询会话当前状态
+     * @param varForms QuerySessionStatusForms
+     * @return QuerySessionStatusResult
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public QuerySessionStatusResult querySessionStatus(QuerySessionStatusForms varForms) throws ApiException {
+        ApiResponse<QuerySessionStatusResult> resp = querySessionStatusWithHttpInfo(varForms);
+        return resp.getData();
+    }
+
+    /**
+     * 
+     * 查询会话当前状态
+     * @param varForms QuerySessionStatusForms
+     * @return ApiResponse&lt;QuerySessionStatusResult&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<QuerySessionStatusResult> querySessionStatusWithHttpInfo(QuerySessionStatusForms varForms) throws ApiException {
+        com.squareup.okhttp.Call call = querySessionStatusValidateBeforeCall(varForms);
+        return apiClient.execute(call, QuerySessionStatusResult.class);
+    }
+
+    /**
+     *  (asynchronously)
+     * 查询会话当前状态
+     * @param varForms QuerySessionStatusForms
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call querySessionStatusAsync(QuerySessionStatusForms varForms, final ApiCallback<QuerySessionStatusResult> callback) throws ApiException {
+
+        com.squareup.okhttp.Call call = querySessionStatusValidateBeforeCall(varForms);
+        apiClient.executeAsync(call, QuerySessionStatusResult.class, callback);
         return call;
     }
     /**
