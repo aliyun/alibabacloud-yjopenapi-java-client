@@ -5,7 +5,7 @@
     <artifactId>alibabacloud-yjopenapi-java-client</artifactId>
     <packaging>jar</packaging>
     <name>alibabacloud-yjopenapi-java-client</name>
-    <version>1.0.20230131</version>
+    <version>1.0.20230301</version>
     <url>https://github.com/aliyun/alibabacloud-yjopenapi-java-client</url>
     <description>YuanJing OpenAPI SDK for Java</description>
 

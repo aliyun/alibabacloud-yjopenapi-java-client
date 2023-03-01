@@ -9,10 +9,15 @@ package com.alibaba.yjopenapi.client.api;
 import java.io.IOException;
 
 import com.alibaba.yjopenapi.client.model.BatchStopGameResult;
+import com.alibaba.yjopenapi.client.model.CancelGameHangResult;
 import com.alibaba.yjopenapi.client.model.GetGameConcurrencyResult;
 import com.alibaba.yjopenapi.client.model.GetStockResult;
 import com.alibaba.yjopenapi.client.model.GetStopGameTokenResult;
+import com.alibaba.yjopenapi.client.model.ListGameServerIpResult;
+import com.alibaba.yjopenapi.client.model.QueryGameHangResult;
 import com.alibaba.yjopenapi.client.model.QuerySessionStatusResult;
+import com.alibaba.yjopenapi.client.model.SetGameAliveResult;
+import com.alibaba.yjopenapi.client.model.SetGameHangResult;
 import com.alibaba.yjopenapi.client.model.StopGameResult;
 import com.alibaba.yjopenapi.client.model.TryToGetSlotFormsStartParam;
 import com.alibaba.yjopenapi.client.model.TryToGetSlotResult;
@@ -155,6 +160,95 @@ public class DispatchApi {
 
         com.squareup.okhttp.Call call = batchStopGameValidateBeforeCall(varForms);
         apiClient.executeAsync(call, BatchStopGameResult.class, callback);
+        return call;
+    }
+    /**
+     * Build call for cancelGameHang
+     * @param varForms CancelGameHangForms
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call cancelGameHangCall(CancelGameHangForms varForms) throws ApiException {
+        
+        // create path and map variables
+        String localVarPath = "/cancelGameHang";
+
+        Map<String, String> localVarQueryParams = new HashMap<String, String>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        localVarFormParams.put("gameSession", varForms.getGameSession());
+        localVarFormParams.put("appKey", varForms.getAppKey());
+
+        final List<String> localVarAccepts = Arrays.asList(
+            "application/json"
+        );
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final List<String> localVarContentTypes = Arrays.asList(
+            "application/x-www-form-urlencoded"
+        );
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String path = configuration.getScheme() + "://" + configuration.getHost() + localVarPath;
+        return apiClient.buildCall(path, "POST", localVarQueryParams, localVarHeaderParams, localVarFormParams, configuration);
+    }
+    
+    private com.squareup.okhttp.Call cancelGameHangValidateBeforeCall(CancelGameHangForms varForms) throws ApiException {
+        // verify the required parameter 'gameSession' is set
+        if (varForms.getGameSession() == null) {
+            throw new ApiException("Missing the required parameter 'gameSession' when calling cancelGameHang(Async)");
+        }
+        // verify the required parameter 'appKey' is set
+        if (varForms.getAppKey() == null) {
+            throw new ApiException("Missing the required parameter 'appKey' when calling cancelGameHang(Async)");
+        }
+        
+        com.squareup.okhttp.Call call = cancelGameHangCall(varForms);
+        return call;
+    }
+
+    /**
+     * 
+     * 取消游戏挂机
+     * @param varForms CancelGameHangForms
+     * @return CancelGameHangResult
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public CancelGameHangResult cancelGameHang(CancelGameHangForms varForms) throws ApiException {
+        ApiResponse<CancelGameHangResult> resp = cancelGameHangWithHttpInfo(varForms);
+        return resp.getData();
+    }
+
+    /**
+     * 
+     * 取消游戏挂机
+     * @param varForms CancelGameHangForms
+     * @return ApiResponse&lt;CancelGameHangResult&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<CancelGameHangResult> cancelGameHangWithHttpInfo(CancelGameHangForms varForms) throws ApiException {
+        com.squareup.okhttp.Call call = cancelGameHangValidateBeforeCall(varForms);
+        return apiClient.execute(call, CancelGameHangResult.class);
+    }
+
+    /**
+     *  (asynchronously)
+     * 取消游戏挂机
+     * @param varForms CancelGameHangForms
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call cancelGameHangAsync(CancelGameHangForms varForms, final ApiCallback<CancelGameHangResult> callback) throws ApiException {
+
+        com.squareup.okhttp.Call call = cancelGameHangValidateBeforeCall(varForms);
+        apiClient.executeAsync(call, CancelGameHangResult.class, callback);
         return call;
     }
     /**
@@ -434,6 +528,180 @@ public class DispatchApi {
         return call;
     }
     /**
+     * Build call for listGameServerIp
+     * @param varForms ListGameServerIpForms
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call listGameServerIpCall(ListGameServerIpForms varForms) throws ApiException {
+        
+        // create path and map variables
+        String localVarPath = "/listGameServerIp";
+
+        Map<String, String> localVarQueryParams = new HashMap<String, String>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        if (varForms.getPageSize() != null) {
+            localVarFormParams.put("pageSize", varForms.getPageSize());
+        }
+        if (varForms.getNextToken() != null) {
+            localVarFormParams.put("nextToken", varForms.getNextToken());
+        }
+
+        final List<String> localVarAccepts = Arrays.asList(
+            "application/json"
+        );
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final List<String> localVarContentTypes = Arrays.asList(
+            "application/x-www-form-urlencoded"
+        );
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String path = configuration.getScheme() + "://" + configuration.getHost() + localVarPath;
+        return apiClient.buildCall(path, "POST", localVarQueryParams, localVarHeaderParams, localVarFormParams, configuration);
+    }
+    
+    private com.squareup.okhttp.Call listGameServerIpValidateBeforeCall(ListGameServerIpForms varForms) throws ApiException {
+        
+        com.squareup.okhttp.Call call = listGameServerIpCall(varForms);
+        return call;
+    }
+
+    /**
+     * 
+     * 获取自己租户下的游戏服务器ip列表
+     * @param varForms ListGameServerIpForms
+     * @return ListGameServerIpResult
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ListGameServerIpResult listGameServerIp(ListGameServerIpForms varForms) throws ApiException {
+        ApiResponse<ListGameServerIpResult> resp = listGameServerIpWithHttpInfo(varForms);
+        return resp.getData();
+    }
+
+    /**
+     * 
+     * 获取自己租户下的游戏服务器ip列表
+     * @param varForms ListGameServerIpForms
+     * @return ApiResponse&lt;ListGameServerIpResult&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ListGameServerIpResult> listGameServerIpWithHttpInfo(ListGameServerIpForms varForms) throws ApiException {
+        com.squareup.okhttp.Call call = listGameServerIpValidateBeforeCall(varForms);
+        return apiClient.execute(call, ListGameServerIpResult.class);
+    }
+
+    /**
+     *  (asynchronously)
+     * 获取自己租户下的游戏服务器ip列表
+     * @param varForms ListGameServerIpForms
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call listGameServerIpAsync(ListGameServerIpForms varForms, final ApiCallback<ListGameServerIpResult> callback) throws ApiException {
+
+        com.squareup.okhttp.Call call = listGameServerIpValidateBeforeCall(varForms);
+        apiClient.executeAsync(call, ListGameServerIpResult.class, callback);
+        return call;
+    }
+    /**
+     * Build call for queryGameHang
+     * @param varForms QueryGameHangForms
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call queryGameHangCall(QueryGameHangForms varForms) throws ApiException {
+        
+        // create path and map variables
+        String localVarPath = "/queryGameHang";
+
+        Map<String, String> localVarQueryParams = new HashMap<String, String>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        localVarFormParams.put("gameSession", varForms.getGameSession());
+        localVarFormParams.put("appKey", varForms.getAppKey());
+
+        final List<String> localVarAccepts = Arrays.asList(
+            "application/json"
+        );
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final List<String> localVarContentTypes = Arrays.asList(
+            "application/x-www-form-urlencoded"
+        );
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String path = configuration.getScheme() + "://" + configuration.getHost() + localVarPath;
+        return apiClient.buildCall(path, "POST", localVarQueryParams, localVarHeaderParams, localVarFormParams, configuration);
+    }
+    
+    private com.squareup.okhttp.Call queryGameHangValidateBeforeCall(QueryGameHangForms varForms) throws ApiException {
+        // verify the required parameter 'gameSession' is set
+        if (varForms.getGameSession() == null) {
+            throw new ApiException("Missing the required parameter 'gameSession' when calling queryGameHang(Async)");
+        }
+        // verify the required parameter 'appKey' is set
+        if (varForms.getAppKey() == null) {
+            throw new ApiException("Missing the required parameter 'appKey' when calling queryGameHang(Async)");
+        }
+        
+        com.squareup.okhttp.Call call = queryGameHangCall(varForms);
+        return call;
+    }
+
+    /**
+     * 
+     * 查询游戏挂机状态
+     * @param varForms QueryGameHangForms
+     * @return QueryGameHangResult
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public QueryGameHangResult queryGameHang(QueryGameHangForms varForms) throws ApiException {
+        ApiResponse<QueryGameHangResult> resp = queryGameHangWithHttpInfo(varForms);
+        return resp.getData();
+    }
+
+    /**
+     * 
+     * 查询游戏挂机状态
+     * @param varForms QueryGameHangForms
+     * @return ApiResponse&lt;QueryGameHangResult&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<QueryGameHangResult> queryGameHangWithHttpInfo(QueryGameHangForms varForms) throws ApiException {
+        com.squareup.okhttp.Call call = queryGameHangValidateBeforeCall(varForms);
+        return apiClient.execute(call, QueryGameHangResult.class);
+    }
+
+    /**
+     *  (asynchronously)
+     * 查询游戏挂机状态
+     * @param varForms QueryGameHangForms
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call queryGameHangAsync(QueryGameHangForms varForms, final ApiCallback<QueryGameHangResult> callback) throws ApiException {
+
+        com.squareup.okhttp.Call call = queryGameHangValidateBeforeCall(varForms);
+        apiClient.executeAsync(call, QueryGameHangResult.class, callback);
+        return call;
+    }
+    /**
      * Build call for querySessionStatus
      * @param varForms QuerySessionStatusForms
      * @return Call to execute
@@ -520,6 +788,194 @@ public class DispatchApi {
 
         com.squareup.okhttp.Call call = querySessionStatusValidateBeforeCall(varForms);
         apiClient.executeAsync(call, QuerySessionStatusResult.class, callback);
+        return call;
+    }
+    /**
+     * Build call for setGameAlive
+     * @param varForms SetGameAliveForms
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call setGameAliveCall(SetGameAliveForms varForms) throws ApiException {
+        
+        // create path and map variables
+        String localVarPath = "/setGameAlive";
+
+        Map<String, String> localVarQueryParams = new HashMap<String, String>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        localVarFormParams.put("gameSession", varForms.getGameSession());
+        localVarFormParams.put("appKey", varForms.getAppKey());
+        localVarFormParams.put("keepAlive", varForms.getKeepAlive());
+
+        final List<String> localVarAccepts = Arrays.asList(
+            "application/json"
+        );
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final List<String> localVarContentTypes = Arrays.asList(
+            "application/x-www-form-urlencoded"
+        );
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String path = configuration.getScheme() + "://" + configuration.getHost() + localVarPath;
+        return apiClient.buildCall(path, "POST", localVarQueryParams, localVarHeaderParams, localVarFormParams, configuration);
+    }
+    
+    private com.squareup.okhttp.Call setGameAliveValidateBeforeCall(SetGameAliveForms varForms) throws ApiException {
+        // verify the required parameter 'gameSession' is set
+        if (varForms.getGameSession() == null) {
+            throw new ApiException("Missing the required parameter 'gameSession' when calling setGameAlive(Async)");
+        }
+        // verify the required parameter 'appKey' is set
+        if (varForms.getAppKey() == null) {
+            throw new ApiException("Missing the required parameter 'appKey' when calling setGameAlive(Async)");
+        }
+        // verify the required parameter 'keepAlive' is set
+        if (varForms.getKeepAlive() == null) {
+            throw new ApiException("Missing the required parameter 'keepAlive' when calling setGameAlive(Async)");
+        }
+        
+        com.squareup.okhttp.Call call = setGameAliveCall(varForms);
+        return call;
+    }
+
+    /**
+     * 
+     * 设置游戏可运行时长
+     * @param varForms SetGameAliveForms
+     * @return SetGameAliveResult
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public SetGameAliveResult setGameAlive(SetGameAliveForms varForms) throws ApiException {
+        ApiResponse<SetGameAliveResult> resp = setGameAliveWithHttpInfo(varForms);
+        return resp.getData();
+    }
+
+    /**
+     * 
+     * 设置游戏可运行时长
+     * @param varForms SetGameAliveForms
+     * @return ApiResponse&lt;SetGameAliveResult&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<SetGameAliveResult> setGameAliveWithHttpInfo(SetGameAliveForms varForms) throws ApiException {
+        com.squareup.okhttp.Call call = setGameAliveValidateBeforeCall(varForms);
+        return apiClient.execute(call, SetGameAliveResult.class);
+    }
+
+    /**
+     *  (asynchronously)
+     * 设置游戏可运行时长
+     * @param varForms SetGameAliveForms
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call setGameAliveAsync(SetGameAliveForms varForms, final ApiCallback<SetGameAliveResult> callback) throws ApiException {
+
+        com.squareup.okhttp.Call call = setGameAliveValidateBeforeCall(varForms);
+        apiClient.executeAsync(call, SetGameAliveResult.class, callback);
+        return call;
+    }
+    /**
+     * Build call for setGameHang
+     * @param varForms SetGameHangForms
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call setGameHangCall(SetGameHangForms varForms) throws ApiException {
+        
+        // create path and map variables
+        String localVarPath = "/setGameHang";
+
+        Map<String, String> localVarQueryParams = new HashMap<String, String>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        localVarFormParams.put("gameSession", varForms.getGameSession());
+        localVarFormParams.put("appKey", varForms.getAppKey());
+        localVarFormParams.put("duration", varForms.getDuration());
+
+        final List<String> localVarAccepts = Arrays.asList(
+            "application/json"
+        );
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final List<String> localVarContentTypes = Arrays.asList(
+            "application/x-www-form-urlencoded"
+        );
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String path = configuration.getScheme() + "://" + configuration.getHost() + localVarPath;
+        return apiClient.buildCall(path, "POST", localVarQueryParams, localVarHeaderParams, localVarFormParams, configuration);
+    }
+    
+    private com.squareup.okhttp.Call setGameHangValidateBeforeCall(SetGameHangForms varForms) throws ApiException {
+        // verify the required parameter 'gameSession' is set
+        if (varForms.getGameSession() == null) {
+            throw new ApiException("Missing the required parameter 'gameSession' when calling setGameHang(Async)");
+        }
+        // verify the required parameter 'appKey' is set
+        if (varForms.getAppKey() == null) {
+            throw new ApiException("Missing the required parameter 'appKey' when calling setGameHang(Async)");
+        }
+        // verify the required parameter 'duration' is set
+        if (varForms.getDuration() == null) {
+            throw new ApiException("Missing the required parameter 'duration' when calling setGameHang(Async)");
+        }
+        
+        com.squareup.okhttp.Call call = setGameHangCall(varForms);
+        return call;
+    }
+
+    /**
+     * 
+     * 设置游戏挂机
+     * @param varForms SetGameHangForms
+     * @return SetGameHangResult
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public SetGameHangResult setGameHang(SetGameHangForms varForms) throws ApiException {
+        ApiResponse<SetGameHangResult> resp = setGameHangWithHttpInfo(varForms);
+        return resp.getData();
+    }
+
+    /**
+     * 
+     * 设置游戏挂机
+     * @param varForms SetGameHangForms
+     * @return ApiResponse&lt;SetGameHangResult&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<SetGameHangResult> setGameHangWithHttpInfo(SetGameHangForms varForms) throws ApiException {
+        com.squareup.okhttp.Call call = setGameHangValidateBeforeCall(varForms);
+        return apiClient.execute(call, SetGameHangResult.class);
+    }
+
+    /**
+     *  (asynchronously)
+     * 设置游戏挂机
+     * @param varForms SetGameHangForms
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call setGameHangAsync(SetGameHangForms varForms, final ApiCallback<SetGameHangResult> callback) throws ApiException {
+
+        com.squareup.okhttp.Call call = setGameHangValidateBeforeCall(varForms);
+        apiClient.executeAsync(call, SetGameHangResult.class, callback);
         return call;
     }
     /**
