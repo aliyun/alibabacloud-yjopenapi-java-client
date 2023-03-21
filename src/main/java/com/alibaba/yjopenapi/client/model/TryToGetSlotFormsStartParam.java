@@ -18,9 +18,6 @@ public class TryToGetSlotFormsStartParam implements Serializable {
   private String resolution = null;
 
 
-  private String pictureQuality = null;
-
-
   private Long keepAlive = null;
 
 
@@ -54,6 +51,21 @@ public class TryToGetSlotFormsStartParam implements Serializable {
   private Integer bitRateSelfAdaption = null;
 
 
+  private String scheduleUserLevels = null;
+
+
+  private String ssaid = null;
+
+
+  private String appChannel = null;
+
+
+  private String cloudInit = null;
+
+
+  private String sysDeviceId = null;
+
+
   public TryToGetSlotFormsStartParam resolution(String resolution) {
     this.resolution = resolution;
     return this;
@@ -69,23 +81,6 @@ public class TryToGetSlotFormsStartParam implements Serializable {
 
   public void setResolution(String resolution) {
     this.resolution = resolution;
-  }
-
-  public TryToGetSlotFormsStartParam pictureQuality(String pictureQuality) {
-    this.pictureQuality = pictureQuality;
-    return this;
-  }
-
-   /**
-   * 画质
-   * @return pictureQuality
-  **/
-  public String getPictureQuality() {
-    return pictureQuality;
-  }
-
-  public void setPictureQuality(String pictureQuality) {
-    this.pictureQuality = pictureQuality;
   }
 
   public TryToGetSlotFormsStartParam keepAlive(Long keepAlive) {
@@ -275,6 +270,91 @@ public class TryToGetSlotFormsStartParam implements Serializable {
     this.bitRateSelfAdaption = bitRateSelfAdaption;
   }
 
+  public TryToGetSlotFormsStartParam scheduleUserLevels(String scheduleUserLevels) {
+    this.scheduleUserLevels = scheduleUserLevels;
+    return this;
+  }
+
+   /**
+   * 游戏调度实例等级
+   * @return scheduleUserLevels
+  **/
+  public String getScheduleUserLevels() {
+    return scheduleUserLevels;
+  }
+
+  public void setScheduleUserLevels(String scheduleUserLevels) {
+    this.scheduleUserLevels = scheduleUserLevels;
+  }
+
+  public TryToGetSlotFormsStartParam ssaid(String ssaid) {
+    this.ssaid = ssaid;
+    return this;
+  }
+
+   /**
+   * 设备号Android
+   * @return ssaid
+  **/
+  public String getSsaid() {
+    return ssaid;
+  }
+
+  public void setSsaid(String ssaid) {
+    this.ssaid = ssaid;
+  }
+
+  public TryToGetSlotFormsStartParam appChannel(String appChannel) {
+    this.appChannel = appChannel;
+    return this;
+  }
+
+   /**
+   * 应用渠道
+   * @return appChannel
+  **/
+  public String getAppChannel() {
+    return appChannel;
+  }
+
+  public void setAppChannel(String appChannel) {
+    this.appChannel = appChannel;
+  }
+
+  public TryToGetSlotFormsStartParam cloudInit(String cloudInit) {
+    this.cloudInit = cloudInit;
+    return this;
+  }
+
+   /**
+   * 游戏初始化路径
+   * @return cloudInit
+  **/
+  public String getCloudInit() {
+    return cloudInit;
+  }
+
+  public void setCloudInit(String cloudInit) {
+    this.cloudInit = cloudInit;
+  }
+
+  public TryToGetSlotFormsStartParam sysDeviceId(String sysDeviceId) {
+    this.sysDeviceId = sysDeviceId;
+    return this;
+  }
+
+   /**
+   * 设备id
+   * @return sysDeviceId
+  **/
+  public String getSysDeviceId() {
+    return sysDeviceId;
+  }
+
+  public void setSysDeviceId(String sysDeviceId) {
+    this.sysDeviceId = sysDeviceId;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -286,7 +366,6 @@ public class TryToGetSlotFormsStartParam implements Serializable {
     }
     TryToGetSlotFormsStartParam tryToGetSlotFormsStartParam = (TryToGetSlotFormsStartParam) o;
     return Objects.equals(this.resolution, tryToGetSlotFormsStartParam.resolution) &&
-        Objects.equals(this.pictureQuality, tryToGetSlotFormsStartParam.pictureQuality) &&
         Objects.equals(this.keepAlive, tryToGetSlotFormsStartParam.keepAlive) &&
         Objects.equals(this.keepDisconnectAlive, tryToGetSlotFormsStartParam.keepDisconnectAlive) &&
         Objects.equals(this.keepNoPlayAlive, tryToGetSlotFormsStartParam.keepNoPlayAlive) &&
@@ -297,12 +376,17 @@ public class TryToGetSlotFormsStartParam implements Serializable {
         Objects.equals(this.deviceResolution, tryToGetSlotFormsStartParam.deviceResolution) &&
         Objects.equals(this.gameInput, tryToGetSlotFormsStartParam.gameInput) &&
         Objects.equals(this.scriptId, tryToGetSlotFormsStartParam.scriptId) &&
-        Objects.equals(this.bitRateSelfAdaption, tryToGetSlotFormsStartParam.bitRateSelfAdaption);
+        Objects.equals(this.bitRateSelfAdaption, tryToGetSlotFormsStartParam.bitRateSelfAdaption) &&
+        Objects.equals(this.scheduleUserLevels, tryToGetSlotFormsStartParam.scheduleUserLevels) &&
+        Objects.equals(this.ssaid, tryToGetSlotFormsStartParam.ssaid) &&
+        Objects.equals(this.appChannel, tryToGetSlotFormsStartParam.appChannel) &&
+        Objects.equals(this.cloudInit, tryToGetSlotFormsStartParam.cloudInit) &&
+        Objects.equals(this.sysDeviceId, tryToGetSlotFormsStartParam.sysDeviceId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(resolution, pictureQuality, keepAlive, keepDisconnectAlive, keepNoPlayAlive, deviceBrand, deviceModel, deviceDpi, deviceDpr, deviceResolution, gameInput, scriptId, bitRateSelfAdaption);
+    return Objects.hash(resolution, keepAlive, keepDisconnectAlive, keepNoPlayAlive, deviceBrand, deviceModel, deviceDpi, deviceDpr, deviceResolution, gameInput, scriptId, bitRateSelfAdaption, scheduleUserLevels, ssaid, appChannel, cloudInit, sysDeviceId);
   }
 
 
@@ -312,7 +396,6 @@ public class TryToGetSlotFormsStartParam implements Serializable {
     sb.append("class TryToGetSlotFormsStartParam {");
     
     sb.append(",resolution: ").append(toIndentedString(resolution));
-    sb.append(",pictureQuality: ").append(toIndentedString(pictureQuality));
     sb.append(",keepAlive: ").append(toIndentedString(keepAlive));
     sb.append(",keepDisconnectAlive: ").append(toIndentedString(keepDisconnectAlive));
     sb.append(",keepNoPlayAlive: ").append(toIndentedString(keepNoPlayAlive));
@@ -324,6 +407,11 @@ public class TryToGetSlotFormsStartParam implements Serializable {
     sb.append(",gameInput: ").append(toIndentedString(gameInput));
     sb.append(",scriptId: ").append(toIndentedString(scriptId));
     sb.append(",bitRateSelfAdaption: ").append(toIndentedString(bitRateSelfAdaption));
+    sb.append(",scheduleUserLevels: ").append(toIndentedString(scheduleUserLevels));
+    sb.append(",ssaid: ").append(toIndentedString(ssaid));
+    sb.append(",appChannel: ").append(toIndentedString(appChannel));
+    sb.append(",cloudInit: ").append(toIndentedString(cloudInit));
+    sb.append(",sysDeviceId: ").append(toIndentedString(sysDeviceId));
     sb.append("}");
     return sb.toString();
   }

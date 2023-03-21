@@ -18,7 +18,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.alibaba</groupId>
   <artifactId>alibabacloud-yjopenapi-java-client</artifactId>
-  <version>1.0.20230301</version>
+  <version>1.0.20230321</version>
 </dependency>
 
 or
@@ -26,7 +26,7 @@ or
 <dependency>
     <groupId>com.alibaba</groupId>
     <artifactId>alibabacloud-yjopenapi-java-client</artifactId>
-    <version>1.0.20230301</version>
+    <version>1.0.20230321</version>
     <classifier>shaded</classifier>
     <exclusions>
         <exclusion>
@@ -100,6 +100,12 @@ try {
  | *DispatchApi* | **setGameHang** | *setGameHangForms*  | *SetGameHangResult* | 设置游戏挂机 |
  | *DispatchApi* | **stopGame** | *stopGameForms*  | *StopGameResult* | 服务端发起，停止某个用户的某个游戏的某个会话 |
  | *DispatchApi* | **tryToGetSlot** | *tryToGetSlotForms*  | *TryToGetSlotResult* | 为用户调度分配游戏容器，容器一旦分配成功会被锁住，一段时间内不再分配给其他用户，过期释放。 |
+ | *InteractiveApi* | **getParty** | *getPartyForms*  | *InteractiveGetPartyResult* | 获取派对 |
+ | *InteractiveApi* | **getPartyStatus** | *getPartyStatusForms*  | *InteractiveGetPartyStatusResult* | 查询派对游戏状态 |
+ | *InteractiveApi* | **joinParty** | *joinPartyForms*  | *InteractiveJoinPartyResult* | 加入分配席位 |
+ | *InteractiveApi* | **kickOutUser** | *kickOutUserForms*  | *InteractiveKickOutUserResult* | 踢出派对 |
+ | *InteractiveApi* | **modifySeats** | *modifySeatsForms*  | *InteractiveModifySeatsResult* | 修改席位 |
+ | *InteractiveApi* | **shutDownParty** | *shutDownPartyForms*  | *InteractiveShutDownPartyResult* | 关闭派对 |
  | *LiveApi* | **queryStatus** | *queryStatusForms*  | *LiveQueryStatusResult* | 查询推流状态 |
  | *LiveApi* | **startGameLive** | *startGameLiveForms*  | *LiveStartGameLiveResult* | 开始直播推流 |
  | *LiveApi* | **stopGameLive** | *stopGameLiveForms*  | *LiveStopGameLiveResult* | 结束直播推流 |
