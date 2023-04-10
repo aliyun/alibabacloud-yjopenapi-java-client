@@ -18,7 +18,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.alibaba</groupId>
   <artifactId>alibabacloud-yjopenapi-java-client</artifactId>
-  <version>1.0.20230321</version>
+  <version>1.0.20230410</version>
 </dependency>
 
 or
@@ -26,7 +26,7 @@ or
 <dependency>
     <groupId>com.alibaba</groupId>
     <artifactId>alibabacloud-yjopenapi-java-client</artifactId>
-    <version>1.0.20230321</version>
+    <version>1.0.20230410</version>
     <classifier>shaded</classifier>
     <exclusions>
         <exclusion>
@@ -72,6 +72,7 @@ try {
 
 | Api | Method | Params | Result | Description |
 | ------------ | ------------- | ------------- | ------------- | ------------- |
+ | *ConsoleAdminApi* | **activateDeployment** | *activateDeploymentForms*  | *ConsoleAdminActivateDeploymentResult* | 激活已部署成功的游戏版本的部署 |
  | *ConsoleAdminApi* | **adaptGameVersion** | *adaptGameVersionForms*  | *ConsoleAdminAdaptGameVersionResult* | 发起游戏版本适配 |
  | *ConsoleAdminApi* | **addGameToProject** | *addGameToProjectForms*  | *ConsoleAdminAddGameToProjectResult* | 将游戏添加到项目 |
  | *ConsoleAdminApi* | **createGame** | *createGameForms*  | *ConsoleAdminCreateGameResult* | 创建游戏 |
@@ -81,6 +82,9 @@ try {
  | *ConsoleAdminApi* | **deleteProject** | *deleteProjectForms*  | *ConsoleAdminDeleteProjectResult* | 删除指定的项目 |
  | *ConsoleAdminApi* | **getGameVersion** | *getGameVersionForms*  | *ConsoleAdminGetGameVersionResult* | 获取单个游戏版本信息 |
  | *ConsoleAdminApi* | **getGameVersionProgress** | *getGameVersionProgressForms*  | *ConsoleAdminGetGameVersionProgressResult* | 查询版本处理进度（包含上传、适配、部署） |
+ | *ConsoleAdminApi* | **listActivateableInstances** | *listActivateableInstancesForms*  | *ConsoleAdminListActivateableInstancesResult* | 指定项目和游戏版本，获取可激活且可调度的实例及调度配置 |
+ | *ConsoleAdminApi* | **listActivatedInstances** | *listActivatedInstancesForms*  | *ConsoleAdminListActivatedInstancesResult* | 指定项目和游戏，获取已激活版本的可调度实例及调度配置 |
+ | *ConsoleAdminApi* | **listControllersOfGame** | *listControllersOfGameForms*  | *ConsoleAdminListControllersOfGameResult* | 获取单个游戏关联的控制器列表 |
  | *ConsoleAdminApi* | **listDeployableInstances** | *listDeployableInstancesForms*  | *ConsoleAdminListDeployableInstancesResult* | 指定项目和游戏版本，获取可以部署的实例 |
  | *ConsoleAdminApi* | **listGameVersions** | *listGameVersionsForms*  | *ConsoleAdminListGameVersionsResult* | 分页获取游戏版本列表 |
  | *ConsoleAdminApi* | **listGames** | *listGamesForms*  | *ConsoleAdminListGamesResult* | 分页获取游戏列表 |

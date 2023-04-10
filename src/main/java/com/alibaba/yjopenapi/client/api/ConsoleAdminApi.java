@@ -8,6 +8,7 @@ package com.alibaba.yjopenapi.client.api;
 
 import java.io.IOException;
 
+import com.alibaba.yjopenapi.client.model.ConsoleAdminActivateDeploymentResult;
 import com.alibaba.yjopenapi.client.model.ConsoleAdminAdaptGameVersionResult;
 import com.alibaba.yjopenapi.client.model.ConsoleAdminAddGameToProjectResult;
 import com.alibaba.yjopenapi.client.model.ConsoleAdminCreateGameResult;
@@ -17,6 +18,9 @@ import com.alibaba.yjopenapi.client.model.ConsoleAdminDeleteGameVersionResult;
 import com.alibaba.yjopenapi.client.model.ConsoleAdminDeleteProjectResult;
 import com.alibaba.yjopenapi.client.model.ConsoleAdminGetGameVersionProgressResult;
 import com.alibaba.yjopenapi.client.model.ConsoleAdminGetGameVersionResult;
+import com.alibaba.yjopenapi.client.model.ConsoleAdminListActivateableInstancesResult;
+import com.alibaba.yjopenapi.client.model.ConsoleAdminListActivatedInstancesResult;
+import com.alibaba.yjopenapi.client.model.ConsoleAdminListControllersOfGameResult;
 import com.alibaba.yjopenapi.client.model.ConsoleAdminListDeployableInstancesResult;
 import com.alibaba.yjopenapi.client.model.ConsoleAdminListGameVersionsResult;
 import com.alibaba.yjopenapi.client.model.ConsoleAdminListGamesResult;
@@ -63,6 +67,103 @@ public class ConsoleAdminApi {
         this.configuration = configuration;
     }
 
+    /**
+     * Build call for activateDeployment
+     * @param varForms ConsoleAdminActivateDeploymentForms
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call activateDeploymentCall(ConsoleAdminActivateDeploymentForms varForms) throws ApiException {
+        
+        // create path and map variables
+        String localVarPath = "/consoleAdmin/activateDeployment";
+
+        Map<String, String> localVarQueryParams = new HashMap<String, String>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        localVarFormParams.put("gameId", varForms.getGameId());
+        localVarFormParams.put("projectId", varForms.getProjectId());
+        localVarFormParams.put("versionId", varForms.getVersionId());
+        if (varForms.getMaxConcurrency() != null) {
+            localVarFormParams.put("maxConcurrency", varForms.getMaxConcurrency());
+        }
+
+        final List<String> localVarAccepts = Arrays.asList(
+            "application/json"
+        );
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final List<String> localVarContentTypes = Arrays.asList(
+            "application/x-www-form-urlencoded"
+        );
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String path = configuration.getScheme() + "://" + configuration.getHost() + localVarPath;
+        return apiClient.buildCall(path, "POST", localVarQueryParams, localVarHeaderParams, localVarFormParams, configuration);
+    }
+    
+    private com.squareup.okhttp.Call activateDeploymentValidateBeforeCall(ConsoleAdminActivateDeploymentForms varForms) throws ApiException {
+        // verify the required parameter 'gameId' is set
+        if (varForms.getGameId() == null) {
+            throw new ApiException("Missing the required parameter 'gameId' when calling activateDeployment(Async)");
+        }
+        // verify the required parameter 'projectId' is set
+        if (varForms.getProjectId() == null) {
+            throw new ApiException("Missing the required parameter 'projectId' when calling activateDeployment(Async)");
+        }
+        // verify the required parameter 'versionId' is set
+        if (varForms.getVersionId() == null) {
+            throw new ApiException("Missing the required parameter 'versionId' when calling activateDeployment(Async)");
+        }
+        
+        com.squareup.okhttp.Call call = activateDeploymentCall(varForms);
+        return call;
+    }
+
+    /**
+     * 
+     * 激活已部署成功的游戏版本的部署
+     * @param varForms ConsoleAdminActivateDeploymentForms
+     * @return ConsoleAdminActivateDeploymentResult
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ConsoleAdminActivateDeploymentResult activateDeployment(ConsoleAdminActivateDeploymentForms varForms) throws ApiException {
+        ApiResponse<ConsoleAdminActivateDeploymentResult> resp = activateDeploymentWithHttpInfo(varForms);
+        return resp.getData();
+    }
+
+    /**
+     * 
+     * 激活已部署成功的游戏版本的部署
+     * @param varForms ConsoleAdminActivateDeploymentForms
+     * @return ApiResponse&lt;ConsoleAdminActivateDeploymentResult&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ConsoleAdminActivateDeploymentResult> activateDeploymentWithHttpInfo(ConsoleAdminActivateDeploymentForms varForms) throws ApiException {
+        com.squareup.okhttp.Call call = activateDeploymentValidateBeforeCall(varForms);
+        return apiClient.execute(call, ConsoleAdminActivateDeploymentResult.class);
+    }
+
+    /**
+     *  (asynchronously)
+     * 激活已部署成功的游戏版本的部署
+     * @param varForms ConsoleAdminActivateDeploymentForms
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call activateDeploymentAsync(ConsoleAdminActivateDeploymentForms varForms, final ApiCallback<ConsoleAdminActivateDeploymentResult> callback) throws ApiException {
+
+        com.squareup.okhttp.Call call = activateDeploymentValidateBeforeCall(varForms);
+        apiClient.executeAsync(call, ConsoleAdminActivateDeploymentResult.class, callback);
+        return call;
+    }
     /**
      * Build call for adaptGameVersion
      * @param varForms ConsoleAdminAdaptGameVersionForms
@@ -827,6 +928,274 @@ public class ConsoleAdminApi {
 
         com.squareup.okhttp.Call call = getGameVersionProgressValidateBeforeCall(varForms);
         apiClient.executeAsync(call, ConsoleAdminGetGameVersionProgressResult.class, callback);
+        return call;
+    }
+    /**
+     * Build call for listActivateableInstances
+     * @param varForms ConsoleAdminListActivateableInstancesForms
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call listActivateableInstancesCall(ConsoleAdminListActivateableInstancesForms varForms) throws ApiException {
+        
+        // create path and map variables
+        String localVarPath = "/consoleAdmin/listActivateableInstances";
+
+        Map<String, String> localVarQueryParams = new HashMap<String, String>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        localVarFormParams.put("projectId", varForms.getProjectId());
+        localVarFormParams.put("versionId", varForms.getVersionId());
+
+        final List<String> localVarAccepts = Arrays.asList(
+            "application/json"
+        );
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final List<String> localVarContentTypes = Arrays.asList(
+            "application/x-www-form-urlencoded"
+        );
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String path = configuration.getScheme() + "://" + configuration.getHost() + localVarPath;
+        return apiClient.buildCall(path, "POST", localVarQueryParams, localVarHeaderParams, localVarFormParams, configuration);
+    }
+    
+    private com.squareup.okhttp.Call listActivateableInstancesValidateBeforeCall(ConsoleAdminListActivateableInstancesForms varForms) throws ApiException {
+        // verify the required parameter 'projectId' is set
+        if (varForms.getProjectId() == null) {
+            throw new ApiException("Missing the required parameter 'projectId' when calling listActivateableInstances(Async)");
+        }
+        // verify the required parameter 'versionId' is set
+        if (varForms.getVersionId() == null) {
+            throw new ApiException("Missing the required parameter 'versionId' when calling listActivateableInstances(Async)");
+        }
+        
+        com.squareup.okhttp.Call call = listActivateableInstancesCall(varForms);
+        return call;
+    }
+
+    /**
+     * 
+     * 指定项目和游戏版本，获取可激活且可调度的实例及调度配置
+     * @param varForms ConsoleAdminListActivateableInstancesForms
+     * @return ConsoleAdminListActivateableInstancesResult
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ConsoleAdminListActivateableInstancesResult listActivateableInstances(ConsoleAdminListActivateableInstancesForms varForms) throws ApiException {
+        ApiResponse<ConsoleAdminListActivateableInstancesResult> resp = listActivateableInstancesWithHttpInfo(varForms);
+        return resp.getData();
+    }
+
+    /**
+     * 
+     * 指定项目和游戏版本，获取可激活且可调度的实例及调度配置
+     * @param varForms ConsoleAdminListActivateableInstancesForms
+     * @return ApiResponse&lt;ConsoleAdminListActivateableInstancesResult&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ConsoleAdminListActivateableInstancesResult> listActivateableInstancesWithHttpInfo(ConsoleAdminListActivateableInstancesForms varForms) throws ApiException {
+        com.squareup.okhttp.Call call = listActivateableInstancesValidateBeforeCall(varForms);
+        return apiClient.execute(call, ConsoleAdminListActivateableInstancesResult.class);
+    }
+
+    /**
+     *  (asynchronously)
+     * 指定项目和游戏版本，获取可激活且可调度的实例及调度配置
+     * @param varForms ConsoleAdminListActivateableInstancesForms
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call listActivateableInstancesAsync(ConsoleAdminListActivateableInstancesForms varForms, final ApiCallback<ConsoleAdminListActivateableInstancesResult> callback) throws ApiException {
+
+        com.squareup.okhttp.Call call = listActivateableInstancesValidateBeforeCall(varForms);
+        apiClient.executeAsync(call, ConsoleAdminListActivateableInstancesResult.class, callback);
+        return call;
+    }
+    /**
+     * Build call for listActivatedInstances
+     * @param varForms ConsoleAdminListActivatedInstancesForms
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call listActivatedInstancesCall(ConsoleAdminListActivatedInstancesForms varForms) throws ApiException {
+        
+        // create path and map variables
+        String localVarPath = "/consoleAdmin/listActivatedInstances";
+
+        Map<String, String> localVarQueryParams = new HashMap<String, String>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        localVarFormParams.put("gameId", varForms.getGameId());
+        localVarFormParams.put("projectId", varForms.getProjectId());
+
+        final List<String> localVarAccepts = Arrays.asList(
+            "application/json"
+        );
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final List<String> localVarContentTypes = Arrays.asList(
+            "application/x-www-form-urlencoded"
+        );
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String path = configuration.getScheme() + "://" + configuration.getHost() + localVarPath;
+        return apiClient.buildCall(path, "POST", localVarQueryParams, localVarHeaderParams, localVarFormParams, configuration);
+    }
+    
+    private com.squareup.okhttp.Call listActivatedInstancesValidateBeforeCall(ConsoleAdminListActivatedInstancesForms varForms) throws ApiException {
+        // verify the required parameter 'gameId' is set
+        if (varForms.getGameId() == null) {
+            throw new ApiException("Missing the required parameter 'gameId' when calling listActivatedInstances(Async)");
+        }
+        // verify the required parameter 'projectId' is set
+        if (varForms.getProjectId() == null) {
+            throw new ApiException("Missing the required parameter 'projectId' when calling listActivatedInstances(Async)");
+        }
+        
+        com.squareup.okhttp.Call call = listActivatedInstancesCall(varForms);
+        return call;
+    }
+
+    /**
+     * 
+     * 指定项目和游戏，获取已激活版本的可调度实例及调度配置
+     * @param varForms ConsoleAdminListActivatedInstancesForms
+     * @return ConsoleAdminListActivatedInstancesResult
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ConsoleAdminListActivatedInstancesResult listActivatedInstances(ConsoleAdminListActivatedInstancesForms varForms) throws ApiException {
+        ApiResponse<ConsoleAdminListActivatedInstancesResult> resp = listActivatedInstancesWithHttpInfo(varForms);
+        return resp.getData();
+    }
+
+    /**
+     * 
+     * 指定项目和游戏，获取已激活版本的可调度实例及调度配置
+     * @param varForms ConsoleAdminListActivatedInstancesForms
+     * @return ApiResponse&lt;ConsoleAdminListActivatedInstancesResult&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ConsoleAdminListActivatedInstancesResult> listActivatedInstancesWithHttpInfo(ConsoleAdminListActivatedInstancesForms varForms) throws ApiException {
+        com.squareup.okhttp.Call call = listActivatedInstancesValidateBeforeCall(varForms);
+        return apiClient.execute(call, ConsoleAdminListActivatedInstancesResult.class);
+    }
+
+    /**
+     *  (asynchronously)
+     * 指定项目和游戏，获取已激活版本的可调度实例及调度配置
+     * @param varForms ConsoleAdminListActivatedInstancesForms
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call listActivatedInstancesAsync(ConsoleAdminListActivatedInstancesForms varForms, final ApiCallback<ConsoleAdminListActivatedInstancesResult> callback) throws ApiException {
+
+        com.squareup.okhttp.Call call = listActivatedInstancesValidateBeforeCall(varForms);
+        apiClient.executeAsync(call, ConsoleAdminListActivatedInstancesResult.class, callback);
+        return call;
+    }
+    /**
+     * Build call for listControllersOfGame
+     * @param varForms ConsoleAdminListControllersOfGameForms
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call listControllersOfGameCall(ConsoleAdminListControllersOfGameForms varForms) throws ApiException {
+        
+        // create path and map variables
+        String localVarPath = "/consoleAdmin/listControllersOfGame";
+
+        Map<String, String> localVarQueryParams = new HashMap<String, String>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        localVarFormParams.put("gameId", varForms.getGameId());
+        if (varForms.getNextToken() != null) {
+            localVarFormParams.put("nextToken", varForms.getNextToken());
+        }
+        if (varForms.getMaxResults() != null) {
+            localVarFormParams.put("maxResults", varForms.getMaxResults());
+        }
+
+        final List<String> localVarAccepts = Arrays.asList(
+            "application/json"
+        );
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final List<String> localVarContentTypes = Arrays.asList(
+            "application/x-www-form-urlencoded"
+        );
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String path = configuration.getScheme() + "://" + configuration.getHost() + localVarPath;
+        return apiClient.buildCall(path, "POST", localVarQueryParams, localVarHeaderParams, localVarFormParams, configuration);
+    }
+    
+    private com.squareup.okhttp.Call listControllersOfGameValidateBeforeCall(ConsoleAdminListControllersOfGameForms varForms) throws ApiException {
+        // verify the required parameter 'gameId' is set
+        if (varForms.getGameId() == null) {
+            throw new ApiException("Missing the required parameter 'gameId' when calling listControllersOfGame(Async)");
+        }
+        
+        com.squareup.okhttp.Call call = listControllersOfGameCall(varForms);
+        return call;
+    }
+
+    /**
+     * 
+     * 获取单个游戏关联的控制器列表
+     * @param varForms ConsoleAdminListControllersOfGameForms
+     * @return ConsoleAdminListControllersOfGameResult
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ConsoleAdminListControllersOfGameResult listControllersOfGame(ConsoleAdminListControllersOfGameForms varForms) throws ApiException {
+        ApiResponse<ConsoleAdminListControllersOfGameResult> resp = listControllersOfGameWithHttpInfo(varForms);
+        return resp.getData();
+    }
+
+    /**
+     * 
+     * 获取单个游戏关联的控制器列表
+     * @param varForms ConsoleAdminListControllersOfGameForms
+     * @return ApiResponse&lt;ConsoleAdminListControllersOfGameResult&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ConsoleAdminListControllersOfGameResult> listControllersOfGameWithHttpInfo(ConsoleAdminListControllersOfGameForms varForms) throws ApiException {
+        com.squareup.okhttp.Call call = listControllersOfGameValidateBeforeCall(varForms);
+        return apiClient.execute(call, ConsoleAdminListControllersOfGameResult.class);
+    }
+
+    /**
+     *  (asynchronously)
+     * 获取单个游戏关联的控制器列表
+     * @param varForms ConsoleAdminListControllersOfGameForms
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call listControllersOfGameAsync(ConsoleAdminListControllersOfGameForms varForms, final ApiCallback<ConsoleAdminListControllersOfGameResult> callback) throws ApiException {
+
+        com.squareup.okhttp.Call call = listControllersOfGameValidateBeforeCall(varForms);
+        apiClient.executeAsync(call, ConsoleAdminListControllersOfGameResult.class, callback);
         return call;
     }
     /**
