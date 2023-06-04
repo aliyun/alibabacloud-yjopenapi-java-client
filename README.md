@@ -18,7 +18,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.alibaba</groupId>
   <artifactId>alibabacloud-yjopenapi-java-client</artifactId>
-  <version>1.0.20230410</version>
+  <version>1.0.20230602</version>
 </dependency>
 
 or
@@ -26,7 +26,7 @@ or
 <dependency>
     <groupId>com.alibaba</groupId>
     <artifactId>alibabacloud-yjopenapi-java-client</artifactId>
-    <version>1.0.20230410</version>
+    <version>1.0.20230602</version>
     <classifier>shaded</classifier>
     <exclusions>
         <exclusion>
@@ -88,6 +88,7 @@ try {
  | *ConsoleAdminApi* | **listDeployableInstances** | *listDeployableInstancesForms*  | *ConsoleAdminListDeployableInstancesResult* | 指定项目和游戏版本，获取可以部署的实例 |
  | *ConsoleAdminApi* | **listGameVersions** | *listGameVersionsForms*  | *ConsoleAdminListGameVersionsResult* | 分页获取游戏版本列表 |
  | *ConsoleAdminApi* | **listGames** | *listGamesForms*  | *ConsoleAdminListGamesResult* | 分页获取游戏列表 |
+ | *ConsoleAdminApi* | **listInstancesOfProject** | *listInstancesOfProjectForms*  | *ConsoleAdminListInstancesOfProjectResult* | 分页获取项目中的实例 |
  | *ConsoleAdminApi* | **listProjects** | *listProjectsForms*  | *ConsoleAdminListProjectsResult* | 分页获取项目列表 |
  | *ConsoleAdminApi* | **removeGameFromProject** | *removeGameFromProjectForms*  | *ConsoleAdminRemoveGameFromProjectResult* | 将游戏移出项目 |
  | *ConsoleAdminApi* | **submitDeployment** | *submitDeploymentForms*  | *ConsoleAdminSubmitDeploymentResult* | 提交游戏版本的部署请求 |
@@ -119,6 +120,7 @@ try {
  | *MultiplayApi* | **leave** | *leaveForms*  | *MultiplayLeaveResult* | 离开联机 |
  | *MultiplayApi* | **modify** | *modifyForms*  | *MultiplayModifyResult* | 修改联机 |
  | *MultiplayApi* | **query** | *queryForms*  | *MultiplayQueryResult* | 离开联机 |
+ | *TokenApi* | **getPair** |   | *GetPairResult* | 获取临时安全令牌(二元组) |
  | *TokenApi* | **getTriple** |   | *GetTripleResult* | 获取临时安全令牌 |
  | *UsercontrollerApi* | **deleteGameArchive** | *deleteGameArchiveForms*  | *UsercontollerDeleteGameArchiveResult* | 根据存档id删除存档纪录 |
  | *UsercontrollerApi* | **getGameTrialSurplusDuration** | *getGameTrialSurplusDurationForms*  | *UsercontollerGetGameTrialSurplusDurationResult* | 查询剩余试玩游戏时长 |
