@@ -24,6 +24,7 @@ import com.alibaba.yjopenapi.client.model.ConsoleAdminListControllersOfGameResul
 import com.alibaba.yjopenapi.client.model.ConsoleAdminListDeployableInstancesResult;
 import com.alibaba.yjopenapi.client.model.ConsoleAdminListGameVersionsResult;
 import com.alibaba.yjopenapi.client.model.ConsoleAdminListGamesResult;
+import com.alibaba.yjopenapi.client.model.ConsoleAdminListInstancesOfProjectResult;
 import com.alibaba.yjopenapi.client.model.ConsoleAdminListProjectsResult;
 import com.alibaba.yjopenapi.client.model.ConsoleAdminRemoveGameFromProjectResult;
 import com.alibaba.yjopenapi.client.model.ConsoleAdminSubmitDeploymentResult;
@@ -1466,6 +1467,96 @@ public class ConsoleAdminApi {
 
         com.squareup.okhttp.Call call = listGamesValidateBeforeCall(varForms);
         apiClient.executeAsync(call, ConsoleAdminListGamesResult.class, callback);
+        return call;
+    }
+    /**
+     * Build call for listInstancesOfProject
+     * @param varForms ConsoleAdminListInstancesOfProjectForms
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call listInstancesOfProjectCall(ConsoleAdminListInstancesOfProjectForms varForms) throws ApiException {
+        
+        // create path and map variables
+        String localVarPath = "/consoleAdmin/listInstancesOfProject";
+
+        Map<String, String> localVarQueryParams = new HashMap<String, String>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        if (varForms.getNextToken() != null) {
+            localVarFormParams.put("nextToken", varForms.getNextToken());
+        }
+        if (varForms.getMaxResult() != null) {
+            localVarFormParams.put("maxResult", varForms.getMaxResult());
+        }
+        localVarFormParams.put("projectId", varForms.getProjectId());
+
+        final List<String> localVarAccepts = Arrays.asList(
+            "application/json"
+        );
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final List<String> localVarContentTypes = Arrays.asList(
+            "application/x-www-form-urlencoded"
+        );
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String path = configuration.getScheme() + "://" + configuration.getHost() + localVarPath;
+        return apiClient.buildCall(path, "POST", localVarQueryParams, localVarHeaderParams, localVarFormParams, configuration);
+    }
+    
+    private com.squareup.okhttp.Call listInstancesOfProjectValidateBeforeCall(ConsoleAdminListInstancesOfProjectForms varForms) throws ApiException {
+        // verify the required parameter 'projectId' is set
+        if (varForms.getProjectId() == null) {
+            throw new ApiException("Missing the required parameter 'projectId' when calling listInstancesOfProject(Async)");
+        }
+        
+        com.squareup.okhttp.Call call = listInstancesOfProjectCall(varForms);
+        return call;
+    }
+
+    /**
+     * 
+     * 分页获取项目中的实例
+     * @param varForms ConsoleAdminListInstancesOfProjectForms
+     * @return ConsoleAdminListInstancesOfProjectResult
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ConsoleAdminListInstancesOfProjectResult listInstancesOfProject(ConsoleAdminListInstancesOfProjectForms varForms) throws ApiException {
+        ApiResponse<ConsoleAdminListInstancesOfProjectResult> resp = listInstancesOfProjectWithHttpInfo(varForms);
+        return resp.getData();
+    }
+
+    /**
+     * 
+     * 分页获取项目中的实例
+     * @param varForms ConsoleAdminListInstancesOfProjectForms
+     * @return ApiResponse&lt;ConsoleAdminListInstancesOfProjectResult&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ConsoleAdminListInstancesOfProjectResult> listInstancesOfProjectWithHttpInfo(ConsoleAdminListInstancesOfProjectForms varForms) throws ApiException {
+        com.squareup.okhttp.Call call = listInstancesOfProjectValidateBeforeCall(varForms);
+        return apiClient.execute(call, ConsoleAdminListInstancesOfProjectResult.class);
+    }
+
+    /**
+     *  (asynchronously)
+     * 分页获取项目中的实例
+     * @param varForms ConsoleAdminListInstancesOfProjectForms
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call listInstancesOfProjectAsync(ConsoleAdminListInstancesOfProjectForms varForms, final ApiCallback<ConsoleAdminListInstancesOfProjectResult> callback) throws ApiException {
+
+        com.squareup.okhttp.Call call = listInstancesOfProjectValidateBeforeCall(varForms);
+        apiClient.executeAsync(call, ConsoleAdminListInstancesOfProjectResult.class, callback);
         return call;
     }
     /**
