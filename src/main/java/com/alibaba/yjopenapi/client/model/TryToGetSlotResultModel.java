@@ -36,6 +36,9 @@ public class TryToGetSlotResultModel implements Serializable {
   private Boolean success = null;
 
 
+  private String slotData = null;
+
+
   public TryToGetSlotResultModel gameId(String gameId) {
     this.gameId = gameId;
     return this;
@@ -155,6 +158,23 @@ public class TryToGetSlotResultModel implements Serializable {
     this.success = success;
   }
 
+  public TryToGetSlotResultModel slotData(String slotData) {
+    this.slotData = slotData;
+    return this;
+  }
+
+   /**
+   * Get slotData
+   * @return slotData
+  **/
+  public String getSlotData() {
+    return slotData;
+  }
+
+  public void setSlotData(String slotData) {
+    this.slotData = slotData;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -171,12 +191,13 @@ public class TryToGetSlotResultModel implements Serializable {
         Objects.equals(this.accountId, tryToGetSlotResultModel.accountId) &&
         Objects.equals(this.code, tryToGetSlotResultModel.code) &&
         Objects.equals(this.message, tryToGetSlotResultModel.message) &&
-        Objects.equals(this.success, tryToGetSlotResultModel.success);
+        Objects.equals(this.success, tryToGetSlotResultModel.success) &&
+        Objects.equals(this.slotData, tryToGetSlotResultModel.slotData);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(gameId, gameSession, regionId, accountId, code, message, success);
+    return Objects.hash(gameId, gameSession, regionId, accountId, code, message, success, slotData);
   }
 
 
@@ -192,6 +213,7 @@ public class TryToGetSlotResultModel implements Serializable {
     sb.append(",code: ").append(toIndentedString(code));
     sb.append(",message: ").append(toIndentedString(message));
     sb.append(",success: ").append(toIndentedString(success));
+    sb.append(",slotData: ").append(toIndentedString(slotData));
     sb.append("}");
     return sb.toString();
   }
