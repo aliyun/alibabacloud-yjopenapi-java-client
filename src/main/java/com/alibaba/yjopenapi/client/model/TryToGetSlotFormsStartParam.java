@@ -66,6 +66,12 @@ public class TryToGetSlotFormsStartParam implements Serializable {
   private String sysDeviceId = null;
 
 
+  private String archiveUrl = null;
+
+
+  private String archiveMd5 = null;
+
+
   public TryToGetSlotFormsStartParam resolution(String resolution) {
     this.resolution = resolution;
     return this;
@@ -355,6 +361,40 @@ public class TryToGetSlotFormsStartParam implements Serializable {
     this.sysDeviceId = sysDeviceId;
   }
 
+  public TryToGetSlotFormsStartParam archiveUrl(String archiveUrl) {
+    this.archiveUrl = archiveUrl;
+    return this;
+  }
+
+   /**
+   * Get archiveUrl
+   * @return archiveUrl
+  **/
+  public String getArchiveUrl() {
+    return archiveUrl;
+  }
+
+  public void setArchiveUrl(String archiveUrl) {
+    this.archiveUrl = archiveUrl;
+  }
+
+  public TryToGetSlotFormsStartParam archiveMd5(String archiveMd5) {
+    this.archiveMd5 = archiveMd5;
+    return this;
+  }
+
+   /**
+   * Get archiveMd5
+   * @return archiveMd5
+  **/
+  public String getArchiveMd5() {
+    return archiveMd5;
+  }
+
+  public void setArchiveMd5(String archiveMd5) {
+    this.archiveMd5 = archiveMd5;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -381,12 +421,14 @@ public class TryToGetSlotFormsStartParam implements Serializable {
         Objects.equals(this.ssaid, tryToGetSlotFormsStartParam.ssaid) &&
         Objects.equals(this.appChannel, tryToGetSlotFormsStartParam.appChannel) &&
         Objects.equals(this.cloudInit, tryToGetSlotFormsStartParam.cloudInit) &&
-        Objects.equals(this.sysDeviceId, tryToGetSlotFormsStartParam.sysDeviceId);
+        Objects.equals(this.sysDeviceId, tryToGetSlotFormsStartParam.sysDeviceId) &&
+        Objects.equals(this.archiveUrl, tryToGetSlotFormsStartParam.archiveUrl) &&
+        Objects.equals(this.archiveMd5, tryToGetSlotFormsStartParam.archiveMd5);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(resolution, keepAlive, keepDisconnectAlive, keepNoPlayAlive, deviceBrand, deviceModel, deviceDpi, deviceDpr, deviceResolution, gameInput, scriptId, bitRateSelfAdaption, scheduleUserLevels, ssaid, appChannel, cloudInit, sysDeviceId);
+    return Objects.hash(resolution, keepAlive, keepDisconnectAlive, keepNoPlayAlive, deviceBrand, deviceModel, deviceDpi, deviceDpr, deviceResolution, gameInput, scriptId, bitRateSelfAdaption, scheduleUserLevels, ssaid, appChannel, cloudInit, sysDeviceId, archiveUrl, archiveMd5);
   }
 
 
@@ -412,6 +454,8 @@ public class TryToGetSlotFormsStartParam implements Serializable {
     sb.append(",appChannel: ").append(toIndentedString(appChannel));
     sb.append(",cloudInit: ").append(toIndentedString(cloudInit));
     sb.append(",sysDeviceId: ").append(toIndentedString(sysDeviceId));
+    sb.append(",archiveUrl: ").append(toIndentedString(archiveUrl));
+    sb.append(",archiveMd5: ").append(toIndentedString(archiveMd5));
     sb.append("}");
     return sb.toString();
   }
