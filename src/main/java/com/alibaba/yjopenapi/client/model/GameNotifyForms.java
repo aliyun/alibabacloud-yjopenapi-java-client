@@ -10,9 +10,9 @@ import java.util.Objects;
 import java.util.Arrays;
 import java.io.Serializable;
 /**
- * SetGameHangForms
+ * GameNotifyForms
  */
-public class SetGameHangForms implements Serializable {
+public class GameNotifyForms implements Serializable {
   private static final long serialVersionUID = 1L;
 
   private String gameSession = null;
@@ -21,13 +21,13 @@ public class SetGameHangForms implements Serializable {
   private String appKey = null;
 
 
-  private Long duration = null;
+  private String type = null;
 
 
-  private Boolean kickInTheGame = null;
+  private String value = null;
 
 
-  public SetGameHangForms gameSession(String gameSession) {
+  public GameNotifyForms gameSession(String gameSession) {
     this.gameSession = gameSession;
     return this;
   }
@@ -44,7 +44,7 @@ public class SetGameHangForms implements Serializable {
     this.gameSession = gameSession;
   }
 
-  public SetGameHangForms appKey(String appKey) {
+  public GameNotifyForms appKey(String appKey) {
     this.appKey = appKey;
     return this;
   }
@@ -61,38 +61,38 @@ public class SetGameHangForms implements Serializable {
     this.appKey = appKey;
   }
 
-  public SetGameHangForms duration(Long duration) {
-    this.duration = duration;
+  public GameNotifyForms type(String type) {
+    this.type = type;
     return this;
   }
 
    /**
-   * 挂机时长
-   * @return duration
+   * 通知类型
+   * @return type
   **/
-  public Long getDuration() {
-    return duration;
+  public String getType() {
+    return type;
   }
 
-  public void setDuration(Long duration) {
-    this.duration = duration;
+  public void setType(String type) {
+    this.type = type;
   }
 
-  public SetGameHangForms kickInTheGame(Boolean kickInTheGame) {
-    this.kickInTheGame = kickInTheGame;
+  public GameNotifyForms value(String value) {
+    this.value = value;
     return this;
   }
 
    /**
-   * 是否踢出游戏中用户
-   * @return kickInTheGame
+   * 通知值
+   * @return value
   **/
-  public Boolean getKickInTheGame() {
-    return kickInTheGame;
+  public String getValue() {
+    return value;
   }
 
-  public void setKickInTheGame(Boolean kickInTheGame) {
-    this.kickInTheGame = kickInTheGame;
+  public void setValue(String value) {
+    this.value = value;
   }
 
 
@@ -104,28 +104,28 @@ public class SetGameHangForms implements Serializable {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SetGameHangForms setGameHangForms = (SetGameHangForms) o;
-    return Objects.equals(this.gameSession, setGameHangForms.gameSession) &&
-        Objects.equals(this.appKey, setGameHangForms.appKey) &&
-        Objects.equals(this.duration, setGameHangForms.duration) &&
-        Objects.equals(this.kickInTheGame, setGameHangForms.kickInTheGame);
+    GameNotifyForms gameNotifyForms = (GameNotifyForms) o;
+    return Objects.equals(this.gameSession, gameNotifyForms.gameSession) &&
+        Objects.equals(this.appKey, gameNotifyForms.appKey) &&
+        Objects.equals(this.type, gameNotifyForms.type) &&
+        Objects.equals(this.value, gameNotifyForms.value);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(gameSession, appKey, duration, kickInTheGame);
+    return Objects.hash(gameSession, appKey, type, value);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SetGameHangForms {");
+    sb.append("class GameNotifyForms {");
     
     sb.append(",gameSession: ").append(toIndentedString(gameSession));
     sb.append(",appKey: ").append(toIndentedString(appKey));
-    sb.append(",duration: ").append(toIndentedString(duration));
-    sb.append(",kickInTheGame: ").append(toIndentedString(kickInTheGame));
+    sb.append(",type: ").append(toIndentedString(type));
+    sb.append(",value: ").append(toIndentedString(value));
     sb.append("}");
     return sb.toString();
   }
