@@ -18,7 +18,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.alibaba</groupId>
   <artifactId>alibabacloud-yjopenapi-java-client</artifactId>
-  <version>1.0.20230619</version>
+  <version>1.0.20230713</version>
 </dependency>
 
 or
@@ -26,7 +26,7 @@ or
 <dependency>
     <groupId>com.alibaba</groupId>
     <artifactId>alibabacloud-yjopenapi-java-client</artifactId>
-    <version>1.0.20230619</version>
+    <version>1.0.20230713</version>
     <classifier>shaded</classifier>
     <exclusions>
         <exclusion>
@@ -95,6 +95,7 @@ try {
  | *ConsoleAdminApi* | **uploadGameVersionByDownload** | *uploadGameVersionByDownloadForms*  | *ConsoleAdminUploadGameVersionByDownloadResult* | 一键上传：文件上传接口，用远程下载的方式生成新版本 |
  | *DispatchApi* | **batchStopGame** | *batchStopGameForms*  | *BatchStopGameResult* | 游戏下全量踢下线，异步接口 |
  | *DispatchApi* | **cancelGameHang** | *cancelGameHangForms*  | *CancelGameHangResult* | 取消游戏挂机 |
+ | *DispatchApi* | **gameNotify** | *gameNotifyForms*  | *GameNotifyResult* | 游戏通知 |
  | *DispatchApi* | **getGameConcurrency** | *getGameConcurrencyForms*  | *GetGameConcurrencyResult* | 调用GetGameConcurrency获取游戏当前并发数 |
  | *DispatchApi* | **getStock** | *getStockForms*  | *GetStockResult* | 调用GetStock获取游戏当前库存 |
  | *DispatchApi* | **getStopGameToken** | *getStopGameTokenForms*  | *GetStopGameTokenResult* | 全量踢下线获取token |

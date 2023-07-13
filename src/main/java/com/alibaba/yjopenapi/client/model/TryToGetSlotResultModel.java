@@ -8,6 +8,9 @@ package com.alibaba.yjopenapi.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
+import com.alibaba.yjopenapi.client.model.TryToGetSlotResultModelOperators;
+import java.util.ArrayList;
+import java.util.List;
 import java.io.Serializable;
 /**
  * TryToGetSlotResultModel
@@ -37,6 +40,18 @@ public class TryToGetSlotResultModel implements Serializable {
 
 
   private String slotData = null;
+
+
+  private String country = null;
+
+
+  private String province = null;
+
+
+  private String city = null;
+
+
+  private List<TryToGetSlotResultModelOperators> operators = null;
 
 
   public TryToGetSlotResultModel gameId(String gameId) {
@@ -164,7 +179,7 @@ public class TryToGetSlotResultModel implements Serializable {
   }
 
    /**
-   * Get slotData
+   * 调度结果集
    * @return slotData
   **/
   public String getSlotData() {
@@ -173,6 +188,82 @@ public class TryToGetSlotResultModel implements Serializable {
 
   public void setSlotData(String slotData) {
     this.slotData = slotData;
+  }
+
+  public TryToGetSlotResultModel country(String country) {
+    this.country = country;
+    return this;
+  }
+
+   /**
+   * 调度资源所在国家
+   * @return country
+  **/
+  public String getCountry() {
+    return country;
+  }
+
+  public void setCountry(String country) {
+    this.country = country;
+  }
+
+  public TryToGetSlotResultModel province(String province) {
+    this.province = province;
+    return this;
+  }
+
+   /**
+   * 调度资源所在省份
+   * @return province
+  **/
+  public String getProvince() {
+    return province;
+  }
+
+  public void setProvince(String province) {
+    this.province = province;
+  }
+
+  public TryToGetSlotResultModel city(String city) {
+    this.city = city;
+    return this;
+  }
+
+   /**
+   * 调度资源所在城市
+   * @return city
+  **/
+  public String getCity() {
+    return city;
+  }
+
+  public void setCity(String city) {
+    this.city = city;
+  }
+
+  public TryToGetSlotResultModel operators(List<TryToGetSlotResultModelOperators> operators) {
+    this.operators = operators;
+    return this;
+  }
+
+  public TryToGetSlotResultModel addOperatorsItem(TryToGetSlotResultModelOperators operatorsItem) {
+    if (this.operators == null) {
+      this.operators = new ArrayList<TryToGetSlotResultModelOperators>();
+    }
+    this.operators.add(operatorsItem);
+    return this;
+  }
+
+   /**
+   * 调度资源运营商信息
+   * @return operators
+  **/
+  public List<TryToGetSlotResultModelOperators> getOperators() {
+    return operators;
+  }
+
+  public void setOperators(List<TryToGetSlotResultModelOperators> operators) {
+    this.operators = operators;
   }
 
 
@@ -192,12 +283,16 @@ public class TryToGetSlotResultModel implements Serializable {
         Objects.equals(this.code, tryToGetSlotResultModel.code) &&
         Objects.equals(this.message, tryToGetSlotResultModel.message) &&
         Objects.equals(this.success, tryToGetSlotResultModel.success) &&
-        Objects.equals(this.slotData, tryToGetSlotResultModel.slotData);
+        Objects.equals(this.slotData, tryToGetSlotResultModel.slotData) &&
+        Objects.equals(this.country, tryToGetSlotResultModel.country) &&
+        Objects.equals(this.province, tryToGetSlotResultModel.province) &&
+        Objects.equals(this.city, tryToGetSlotResultModel.city) &&
+        Objects.equals(this.operators, tryToGetSlotResultModel.operators);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(gameId, gameSession, regionId, accountId, code, message, success, slotData);
+    return Objects.hash(gameId, gameSession, regionId, accountId, code, message, success, slotData, country, province, city, operators);
   }
 
 
@@ -214,6 +309,10 @@ public class TryToGetSlotResultModel implements Serializable {
     sb.append(",message: ").append(toIndentedString(message));
     sb.append(",success: ").append(toIndentedString(success));
     sb.append(",slotData: ").append(toIndentedString(slotData));
+    sb.append(",country: ").append(toIndentedString(country));
+    sb.append(",province: ").append(toIndentedString(province));
+    sb.append(",city: ").append(toIndentedString(city));
+    sb.append(",operators: ").append(toIndentedString(operators));
     sb.append("}");
     return sb.toString();
   }
