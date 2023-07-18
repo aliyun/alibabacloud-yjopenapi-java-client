@@ -20,6 +20,7 @@ import com.alibaba.yjopenapi.client.model.QuerySessionStatusResult;
 import com.alibaba.yjopenapi.client.model.SetGameAliveResult;
 import com.alibaba.yjopenapi.client.model.SetGameHangResult;
 import com.alibaba.yjopenapi.client.model.StopGameResult;
+import com.alibaba.yjopenapi.client.model.StopPreopenContainerResult;
 import com.alibaba.yjopenapi.client.model.TryToGetSlotFormsStartParam;
 import com.alibaba.yjopenapi.client.model.TryToGetSlotResult;
 
@@ -259,7 +260,7 @@ public class DispatchApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call gameNotifyCall(GameNotifyForms varForms) throws ApiException {
-
+        
         // create path and map variables
         String localVarPath = "/gameNotify";
 
@@ -292,7 +293,7 @@ public class DispatchApi {
         String path = configuration.getScheme() + "://" + configuration.getHost() + localVarPath;
         return apiClient.buildCall(path, "POST", localVarQueryParams, localVarHeaderParams, localVarFormParams, configuration);
     }
-
+    
     private com.squareup.okhttp.Call gameNotifyValidateBeforeCall(GameNotifyForms varForms) throws ApiException {
         // verify the required parameter 'gameSession' is set
         if (varForms.getGameSession() == null) {
@@ -306,13 +307,13 @@ public class DispatchApi {
         if (varForms.getType() == null) {
             throw new ApiException("Missing the required parameter 'type' when calling gameNotify(Async)");
         }
-
+        
         com.squareup.okhttp.Call call = gameNotifyCall(varForms);
         return call;
     }
 
     /**
-     *
+     * 
      * 游戏通知
      * @param varForms GameNotifyForms
      * @return GameNotifyResult
@@ -324,7 +325,7 @@ public class DispatchApi {
     }
 
     /**
-     *
+     * 
      * 游戏通知
      * @param varForms GameNotifyForms
      * @return ApiResponse&lt;GameNotifyResult&gt;
@@ -1179,6 +1180,95 @@ public class DispatchApi {
 
         com.squareup.okhttp.Call call = stopGameValidateBeforeCall(varForms);
         apiClient.executeAsync(call, StopGameResult.class, callback);
+        return call;
+    }
+    /**
+     * Build call for stopPreopenContainer
+     * @param varForms StopPreopenContainerForms
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call stopPreopenContainerCall(StopPreopenContainerForms varForms) throws ApiException {
+        
+        // create path and map variables
+        String localVarPath = "/stopPreopenContainer";
+
+        Map<String, String> localVarQueryParams = new HashMap<String, String>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        localVarFormParams.put("appKey", varForms.getAppKey());
+        localVarFormParams.put("gameId", varForms.getGameId());
+
+        final List<String> localVarAccepts = Arrays.asList(
+            "application/json"
+        );
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final List<String> localVarContentTypes = Arrays.asList(
+            "application/x-www-form-urlencoded"
+        );
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String path = configuration.getScheme() + "://" + configuration.getHost() + localVarPath;
+        return apiClient.buildCall(path, "POST", localVarQueryParams, localVarHeaderParams, localVarFormParams, configuration);
+    }
+    
+    private com.squareup.okhttp.Call stopPreopenContainerValidateBeforeCall(StopPreopenContainerForms varForms) throws ApiException {
+        // verify the required parameter 'appKey' is set
+        if (varForms.getAppKey() == null) {
+            throw new ApiException("Missing the required parameter 'appKey' when calling stopPreopenContainer(Async)");
+        }
+        // verify the required parameter 'gameId' is set
+        if (varForms.getGameId() == null) {
+            throw new ApiException("Missing the required parameter 'gameId' when calling stopPreopenContainer(Async)");
+        }
+        
+        com.squareup.okhttp.Call call = stopPreopenContainerCall(varForms);
+        return call;
+    }
+
+    /**
+     * 
+     * 停止预开容器
+     * @param varForms StopPreopenContainerForms
+     * @return StopPreopenContainerResult
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public StopPreopenContainerResult stopPreopenContainer(StopPreopenContainerForms varForms) throws ApiException {
+        ApiResponse<StopPreopenContainerResult> resp = stopPreopenContainerWithHttpInfo(varForms);
+        return resp.getData();
+    }
+
+    /**
+     * 
+     * 停止预开容器
+     * @param varForms StopPreopenContainerForms
+     * @return ApiResponse&lt;StopPreopenContainerResult&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<StopPreopenContainerResult> stopPreopenContainerWithHttpInfo(StopPreopenContainerForms varForms) throws ApiException {
+        com.squareup.okhttp.Call call = stopPreopenContainerValidateBeforeCall(varForms);
+        return apiClient.execute(call, StopPreopenContainerResult.class);
+    }
+
+    /**
+     *  (asynchronously)
+     * 停止预开容器
+     * @param varForms StopPreopenContainerForms
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call stopPreopenContainerAsync(StopPreopenContainerForms varForms, final ApiCallback<StopPreopenContainerResult> callback) throws ApiException {
+
+        com.squareup.okhttp.Call call = stopPreopenContainerValidateBeforeCall(varForms);
+        apiClient.executeAsync(call, StopPreopenContainerResult.class, callback);
         return call;
     }
     /**

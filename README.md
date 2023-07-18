@@ -18,7 +18,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.alibaba</groupId>
   <artifactId>alibabacloud-yjopenapi-java-client</artifactId>
-  <version>1.0.20230713</version>
+  <version>1.0.20230718</version>
 </dependency>
 
 or
@@ -26,7 +26,7 @@ or
 <dependency>
     <groupId>com.alibaba</groupId>
     <artifactId>alibabacloud-yjopenapi-java-client</artifactId>
-    <version>1.0.20230713</version>
+    <version>1.0.20230718</version>
     <classifier>shaded</classifier>
     <exclusions>
         <exclusion>
@@ -86,10 +86,12 @@ try {
  | *ConsoleAdminApi* | **listActivatedInstances** | *listActivatedInstancesForms*  | *ConsoleAdminListActivatedInstancesResult* | 指定项目和游戏，获取已激活版本的可调度实例及调度配置 |
  | *ConsoleAdminApi* | **listControllersOfGame** | *listControllersOfGameForms*  | *ConsoleAdminListControllersOfGameResult* | 获取单个游戏关联的控制器列表 |
  | *ConsoleAdminApi* | **listDeployableInstances** | *listDeployableInstancesForms*  | *ConsoleAdminListDeployableInstancesResult* | 指定项目和游戏版本，获取可以部署的实例 |
+ | *ConsoleAdminApi* | **listGameDeployDetailsOfProject** | *listGameDeployDetailsOfProjectForms*  | *ConsoleAdminListGameDeployDetailsOfProjectResult* | 获取项目下游戏部署版本信息 |
  | *ConsoleAdminApi* | **listGameVersions** | *listGameVersionsForms*  | *ConsoleAdminListGameVersionsResult* | 分页获取游戏版本列表 |
  | *ConsoleAdminApi* | **listGames** | *listGamesForms*  | *ConsoleAdminListGamesResult* | 分页获取游戏列表 |
  | *ConsoleAdminApi* | **listInstancesOfProject** | *listInstancesOfProjectForms*  | *ConsoleAdminListInstancesOfProjectResult* | 分页获取项目中的实例 |
  | *ConsoleAdminApi* | **listProjects** | *listProjectsForms*  | *ConsoleAdminListProjectsResult* | 分页获取项目列表 |
+ | *ConsoleAdminApi* | **listVersionDeployInstances** | *listVersionDeployInstancesForms*  | *ConsoleAdminListVersionDeployInstancesResult* | 获取项目下游戏版本的部署实例信息 |
  | *ConsoleAdminApi* | **removeGameFromProject** | *removeGameFromProjectForms*  | *ConsoleAdminRemoveGameFromProjectResult* | 将游戏移出项目 |
  | *ConsoleAdminApi* | **submitDeployment** | *submitDeploymentForms*  | *ConsoleAdminSubmitDeploymentResult* | 提交游戏版本的部署请求 |
  | *ConsoleAdminApi* | **uploadGameVersionByDownload** | *uploadGameVersionByDownloadForms*  | *ConsoleAdminUploadGameVersionByDownloadResult* | 一键上传：文件上传接口，用远程下载的方式生成新版本 |
@@ -105,6 +107,7 @@ try {
  | *DispatchApi* | **setGameAlive** | *setGameAliveForms*  | *SetGameAliveResult* | 设置游戏可运行时长 |
  | *DispatchApi* | **setGameHang** | *setGameHangForms*  | *SetGameHangResult* | 设置游戏挂机 |
  | *DispatchApi* | **stopGame** | *stopGameForms*  | *StopGameResult* | 服务端发起，停止某个用户的某个游戏的某个会话 |
+ | *DispatchApi* | **stopPreopenContainer** | *stopPreopenContainerForms*  | *StopPreopenContainerResult* | 停止预开容器 |
  | *DispatchApi* | **tryToGetSlot** | *tryToGetSlotForms*  | *TryToGetSlotResult* | 为用户调度分配游戏容器，容器一旦分配成功会被锁住，一段时间内不再分配给其他用户，过期释放。 |
  | *InteractiveApi* | **getParty** | *getPartyForms*  | *InteractiveGetPartyResult* | 获取派对 |
  | *InteractiveApi* | **getPartyStatus** | *getPartyStatusForms*  | *InteractiveGetPartyStatusResult* | 查询派对游戏状态 |

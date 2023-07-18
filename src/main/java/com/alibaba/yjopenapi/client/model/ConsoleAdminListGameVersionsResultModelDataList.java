@@ -21,6 +21,12 @@ public class ConsoleAdminListGameVersionsResultModelDataList implements Serializ
   private String versionName = null;
 
 
+  private String adaptState = null;
+
+
+  private Long adaptFinishTime = null;
+
+
   public ConsoleAdminListGameVersionsResultModelDataList versionId(String versionId) {
     this.versionId = versionId;
     return this;
@@ -55,6 +61,40 @@ public class ConsoleAdminListGameVersionsResultModelDataList implements Serializ
     this.versionName = versionName;
   }
 
+  public ConsoleAdminListGameVersionsResultModelDataList adaptState(String adaptState) {
+    this.adaptState = adaptState;
+    return this;
+  }
+
+   /**
+   * 适配评测状态
+   * @return adaptState
+  **/
+  public String getAdaptState() {
+    return adaptState;
+  }
+
+  public void setAdaptState(String adaptState) {
+    this.adaptState = adaptState;
+  }
+
+  public ConsoleAdminListGameVersionsResultModelDataList adaptFinishTime(Long adaptFinishTime) {
+    this.adaptFinishTime = adaptFinishTime;
+    return this;
+  }
+
+   /**
+   * 适配评测完成时间戳
+   * @return adaptFinishTime
+  **/
+  public Long getAdaptFinishTime() {
+    return adaptFinishTime;
+  }
+
+  public void setAdaptFinishTime(Long adaptFinishTime) {
+    this.adaptFinishTime = adaptFinishTime;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -66,12 +106,14 @@ public class ConsoleAdminListGameVersionsResultModelDataList implements Serializ
     }
     ConsoleAdminListGameVersionsResultModelDataList consoleAdminListGameVersionsResultModelDataList = (ConsoleAdminListGameVersionsResultModelDataList) o;
     return Objects.equals(this.versionId, consoleAdminListGameVersionsResultModelDataList.versionId) &&
-        Objects.equals(this.versionName, consoleAdminListGameVersionsResultModelDataList.versionName);
+        Objects.equals(this.versionName, consoleAdminListGameVersionsResultModelDataList.versionName) &&
+        Objects.equals(this.adaptState, consoleAdminListGameVersionsResultModelDataList.adaptState) &&
+        Objects.equals(this.adaptFinishTime, consoleAdminListGameVersionsResultModelDataList.adaptFinishTime);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(versionId, versionName);
+    return Objects.hash(versionId, versionName, adaptState, adaptFinishTime);
   }
 
 
@@ -82,6 +124,8 @@ public class ConsoleAdminListGameVersionsResultModelDataList implements Serializ
     
     sb.append(",versionId: ").append(toIndentedString(versionId));
     sb.append(",versionName: ").append(toIndentedString(versionName));
+    sb.append(",adaptState: ").append(toIndentedString(adaptState));
+    sb.append(",adaptFinishTime: ").append(toIndentedString(adaptFinishTime));
     sb.append("}");
     return sb.toString();
   }
