@@ -1200,6 +1200,9 @@ public class DispatchApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         localVarFormParams.put("appKey", varForms.getAppKey());
         localVarFormParams.put("gameId", varForms.getGameId());
+        if (varForms.getNumberOfBatches() != null) {
+            localVarFormParams.put("numberOfBatches", varForms.getNumberOfBatches());
+        }
 
         final List<String> localVarAccepts = Arrays.asList(
             "application/json"

@@ -21,6 +21,9 @@ public class StopPreopenContainerForms implements Serializable {
   private String gameId = null;
 
 
+  private Integer numberOfBatches = null;
+
+
   public StopPreopenContainerForms appKey(String appKey) {
     this.appKey = appKey;
     return this;
@@ -55,6 +58,23 @@ public class StopPreopenContainerForms implements Serializable {
     this.gameId = gameId;
   }
 
+  public StopPreopenContainerForms numberOfBatches(Integer numberOfBatches) {
+    this.numberOfBatches = numberOfBatches;
+    return this;
+  }
+
+   /**
+   * 分批数
+   * @return numberOfBatches
+  **/
+  public Integer getNumberOfBatches() {
+    return numberOfBatches;
+  }
+
+  public void setNumberOfBatches(Integer numberOfBatches) {
+    this.numberOfBatches = numberOfBatches;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -66,12 +86,13 @@ public class StopPreopenContainerForms implements Serializable {
     }
     StopPreopenContainerForms stopPreopenContainerForms = (StopPreopenContainerForms) o;
     return Objects.equals(this.appKey, stopPreopenContainerForms.appKey) &&
-        Objects.equals(this.gameId, stopPreopenContainerForms.gameId);
+        Objects.equals(this.gameId, stopPreopenContainerForms.gameId) &&
+        Objects.equals(this.numberOfBatches, stopPreopenContainerForms.numberOfBatches);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(appKey, gameId);
+    return Objects.hash(appKey, gameId, numberOfBatches);
   }
 
 
@@ -82,6 +103,7 @@ public class StopPreopenContainerForms implements Serializable {
     
     sb.append(",appKey: ").append(toIndentedString(appKey));
     sb.append(",gameId: ").append(toIndentedString(gameId));
+    sb.append(",numberOfBatches: ").append(toIndentedString(numberOfBatches));
     sb.append("}");
     return sb.toString();
   }
