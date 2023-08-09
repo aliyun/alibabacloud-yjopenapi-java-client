@@ -18,7 +18,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.alibaba</groupId>
   <artifactId>alibabacloud-yjopenapi-java-client</artifactId>
-  <version>1.0.20230725</version>
+  <version>1.0.20230809</version>
 </dependency>
 
 or
@@ -26,7 +26,7 @@ or
 <dependency>
     <groupId>com.alibaba</groupId>
     <artifactId>alibabacloud-yjopenapi-java-client</artifactId>
-    <version>1.0.20230725</version>
+    <version>1.0.20230809</version>
     <classifier>shaded</classifier>
     <exclusions>
         <exclusion>
@@ -128,6 +128,7 @@ try {
  | *TokenApi* | **getTriple** |   | *GetTripleResult* | 获取临时安全令牌 |
  | *UsercontrollerApi* | **deleteGameArchive** | *deleteGameArchiveForms*  | *UsercontollerDeleteGameArchiveResult* | 根据存档id删除存档纪录 |
  | *UsercontrollerApi* | **getGameTrialSurplusDuration** | *getGameTrialSurplusDurationForms*  | *UsercontollerGetGameTrialSurplusDurationResult* | 查询剩余试玩游戏时长 |
+ | *UsercontrollerApi* | **getUserGameArchive** | *getUserGameArchiveForms*  | *UsercontollerGetUserGameArchiveResult* | 查询用户正常状态的最新存档纪录，按照存档时间倒序 |
  | *UsercontrollerApi* | **listLatestGameArchive** | *listLatestGameArchiveForms*  | *UsercontollerListLatestGameArchiveResult* | 查询用户正常状态的最新存档纪录，按照存档时间倒序 |
  | *UsercontrollerApi* | **restoreGameArchive** | *restoreGameArchiveForms*  | *UsercontollerRestoreGameArchiveResult* | 将指定的存档ID恢复为最新存档 |
  | *UsercontrollerApi* | **updateGameArchiveTagStatus** | *updateGameArchiveTagStatusForms*  | *UsercontollerUpdateGameArchiveTagStatusResult* | 更新存档打标状态 |

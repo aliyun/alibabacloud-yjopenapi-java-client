@@ -10,6 +10,7 @@ import java.io.IOException;
 
 import com.alibaba.yjopenapi.client.model.UsercontollerDeleteGameArchiveResult;
 import com.alibaba.yjopenapi.client.model.UsercontollerGetGameTrialSurplusDurationResult;
+import com.alibaba.yjopenapi.client.model.UsercontollerGetUserGameArchiveResult;
 import com.alibaba.yjopenapi.client.model.UsercontollerListLatestGameArchiveResult;
 import com.alibaba.yjopenapi.client.model.UsercontollerRestoreGameArchiveResult;
 import com.alibaba.yjopenapi.client.model.UsercontollerUpdateGameArchiveTagStatusResult;
@@ -237,6 +238,100 @@ public class UsercontrollerApi {
 
         com.squareup.okhttp.Call call = getGameTrialSurplusDurationValidateBeforeCall(varForms);
         apiClient.executeAsync(call, UsercontollerGetGameTrialSurplusDurationResult.class, callback);
+        return call;
+    }
+    /**
+     * Build call for getUserGameArchive
+     * @param varForms UsercontrollerGetUserGameArchiveForms
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getUserGameArchiveCall(UsercontrollerGetUserGameArchiveForms varForms) throws ApiException {
+        
+        // create path and map variables
+        String localVarPath = "/usercontroller/getUserGameArchive";
+
+        Map<String, String> localVarQueryParams = new HashMap<String, String>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        localVarFormParams.put("userId", varForms.getUserId());
+        localVarFormParams.put("gameId", varForms.getGameId());
+        localVarFormParams.put("projectId", varForms.getProjectId());
+
+        final List<String> localVarAccepts = Arrays.asList(
+            "application/json"
+        );
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final List<String> localVarContentTypes = Arrays.asList(
+            "application/x-www-form-urlencoded"
+        );
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String path = configuration.getScheme() + "://" + configuration.getHost() + localVarPath;
+        return apiClient.buildCall(path, "POST", localVarQueryParams, localVarHeaderParams, localVarFormParams, configuration);
+    }
+    
+    private com.squareup.okhttp.Call getUserGameArchiveValidateBeforeCall(UsercontrollerGetUserGameArchiveForms varForms) throws ApiException {
+        // verify the required parameter 'userId' is set
+        if (varForms.getUserId() == null) {
+            throw new ApiException("Missing the required parameter 'userId' when calling getUserGameArchive(Async)");
+        }
+        // verify the required parameter 'gameId' is set
+        if (varForms.getGameId() == null) {
+            throw new ApiException("Missing the required parameter 'gameId' when calling getUserGameArchive(Async)");
+        }
+        // verify the required parameter 'projectId' is set
+        if (varForms.getProjectId() == null) {
+            throw new ApiException("Missing the required parameter 'projectId' when calling getUserGameArchive(Async)");
+        }
+        
+        com.squareup.okhttp.Call call = getUserGameArchiveCall(varForms);
+        return call;
+    }
+
+    /**
+     * 
+     * 查询用户正常状态的最新存档纪录，按照存档时间倒序
+     * @param varForms UsercontrollerGetUserGameArchiveForms
+     * @return UsercontollerGetUserGameArchiveResult
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public UsercontollerGetUserGameArchiveResult getUserGameArchive(UsercontrollerGetUserGameArchiveForms varForms) throws ApiException {
+        ApiResponse<UsercontollerGetUserGameArchiveResult> resp = getUserGameArchiveWithHttpInfo(varForms);
+        return resp.getData();
+    }
+
+    /**
+     * 
+     * 查询用户正常状态的最新存档纪录，按照存档时间倒序
+     * @param varForms UsercontrollerGetUserGameArchiveForms
+     * @return ApiResponse&lt;UsercontollerGetUserGameArchiveResult&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<UsercontollerGetUserGameArchiveResult> getUserGameArchiveWithHttpInfo(UsercontrollerGetUserGameArchiveForms varForms) throws ApiException {
+        com.squareup.okhttp.Call call = getUserGameArchiveValidateBeforeCall(varForms);
+        return apiClient.execute(call, UsercontollerGetUserGameArchiveResult.class);
+    }
+
+    /**
+     *  (asynchronously)
+     * 查询用户正常状态的最新存档纪录，按照存档时间倒序
+     * @param varForms UsercontrollerGetUserGameArchiveForms
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getUserGameArchiveAsync(UsercontrollerGetUserGameArchiveForms varForms, final ApiCallback<UsercontollerGetUserGameArchiveResult> callback) throws ApiException {
+
+        com.squareup.okhttp.Call call = getUserGameArchiveValidateBeforeCall(varForms);
+        apiClient.executeAsync(call, UsercontollerGetUserGameArchiveResult.class, callback);
         return call;
     }
     /**
