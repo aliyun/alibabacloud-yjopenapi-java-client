@@ -256,7 +256,7 @@ public class UsercontrollerApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-        localVarFormParams.put("userId", varForms.getUserId());
+        localVarFormParams.put("accountId", varForms.getAccountId());
         localVarFormParams.put("gameId", varForms.getGameId());
         localVarFormParams.put("projectId", varForms.getProjectId());
 
@@ -279,9 +279,9 @@ public class UsercontrollerApi {
     }
     
     private com.squareup.okhttp.Call getUserGameArchiveValidateBeforeCall(UsercontrollerGetUserGameArchiveForms varForms) throws ApiException {
-        // verify the required parameter 'userId' is set
-        if (varForms.getUserId() == null) {
-            throw new ApiException("Missing the required parameter 'userId' when calling getUserGameArchive(Async)");
+        // verify the required parameter 'accountId' is set
+        if (varForms.getAccountId() == null) {
+            throw new ApiException("Missing the required parameter 'accountId' when calling getUserGameArchive(Async)");
         }
         // verify the required parameter 'gameId' is set
         if (varForms.getGameId() == null) {

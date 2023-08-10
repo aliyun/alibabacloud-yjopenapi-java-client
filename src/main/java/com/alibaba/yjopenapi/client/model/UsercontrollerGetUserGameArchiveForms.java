@@ -15,33 +15,33 @@ import java.io.Serializable;
 public class UsercontrollerGetUserGameArchiveForms implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  private String userId = null;
+  private String accountId = null;
 
 
-  private Long gameId = null;
+  private String gameId = null;
 
 
-  private Long projectId = null;
+  private String projectId = null;
 
 
-  public UsercontrollerGetUserGameArchiveForms userId(String userId) {
-    this.userId = userId;
+  public UsercontrollerGetUserGameArchiveForms accountId(String accountId) {
+    this.accountId = accountId;
     return this;
   }
 
    /**
    * 用户id
-   * @return userId
+   * @return accountId
   **/
-  public String getUserId() {
-    return userId;
+  public String getAccountId() {
+    return accountId;
   }
 
-  public void setUserId(String userId) {
-    this.userId = userId;
+  public void setAccountId(String accountId) {
+    this.accountId = accountId;
   }
 
-  public UsercontrollerGetUserGameArchiveForms gameId(Long gameId) {
+  public UsercontrollerGetUserGameArchiveForms gameId(String gameId) {
     this.gameId = gameId;
     return this;
   }
@@ -50,15 +50,15 @@ public class UsercontrollerGetUserGameArchiveForms implements Serializable {
    * 游戏Id
    * @return gameId
   **/
-  public Long getGameId() {
+  public String getGameId() {
     return gameId;
   }
 
-  public void setGameId(Long gameId) {
+  public void setGameId(String gameId) {
     this.gameId = gameId;
   }
 
-  public UsercontrollerGetUserGameArchiveForms projectId(Long projectId) {
+  public UsercontrollerGetUserGameArchiveForms projectId(String projectId) {
     this.projectId = projectId;
     return this;
   }
@@ -67,11 +67,11 @@ public class UsercontrollerGetUserGameArchiveForms implements Serializable {
    * 项目ID
    * @return projectId
   **/
-  public Long getProjectId() {
+  public String getProjectId() {
     return projectId;
   }
 
-  public void setProjectId(Long projectId) {
+  public void setProjectId(String projectId) {
     this.projectId = projectId;
   }
 
@@ -85,14 +85,14 @@ public class UsercontrollerGetUserGameArchiveForms implements Serializable {
       return false;
     }
     UsercontrollerGetUserGameArchiveForms usercontrollerGetUserGameArchiveForms = (UsercontrollerGetUserGameArchiveForms) o;
-    return Objects.equals(this.userId, usercontrollerGetUserGameArchiveForms.userId) &&
+    return Objects.equals(this.accountId, usercontrollerGetUserGameArchiveForms.accountId) &&
         Objects.equals(this.gameId, usercontrollerGetUserGameArchiveForms.gameId) &&
         Objects.equals(this.projectId, usercontrollerGetUserGameArchiveForms.projectId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(userId, gameId, projectId);
+    return Objects.hash(accountId, gameId, projectId);
   }
 
 
@@ -101,7 +101,7 @@ public class UsercontrollerGetUserGameArchiveForms implements Serializable {
     StringBuilder sb = new StringBuilder();
     sb.append("class UsercontrollerGetUserGameArchiveForms {");
     
-    sb.append(",userId: ").append(toIndentedString(userId));
+    sb.append(",accountId: ").append(toIndentedString(accountId));
     sb.append(",gameId: ").append(toIndentedString(gameId));
     sb.append(",projectId: ").append(toIndentedString(projectId));
     sb.append("}");

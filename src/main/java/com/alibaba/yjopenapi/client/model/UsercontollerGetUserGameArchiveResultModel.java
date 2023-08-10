@@ -8,7 +8,7 @@ package com.alibaba.yjopenapi.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.alibaba.yjopenapi.client.model.UsercontollerGetUserGameArchiveResultModelModel;
+import com.alibaba.yjopenapi.client.model.UsercontollerGetUserGameArchiveResultModelUserGameArchiveDTO;
 import java.io.Serializable;
 /**
  * UsercontollerGetUserGameArchiveResultModel
@@ -22,10 +22,7 @@ public class UsercontollerGetUserGameArchiveResultModel implements Serializable 
   private String objectMD5 = null;
 
 
-  private Long archiveId = null;
-
-
-  private UsercontollerGetUserGameArchiveResultModelModel model = null;
+  private UsercontollerGetUserGameArchiveResultModelUserGameArchiveDTO userGameArchiveDTO = null;
 
 
   public UsercontollerGetUserGameArchiveResultModel downloadUrl(String downloadUrl) {
@@ -62,38 +59,21 @@ public class UsercontollerGetUserGameArchiveResultModel implements Serializable 
     this.objectMD5 = objectMD5;
   }
 
-  public UsercontollerGetUserGameArchiveResultModel archiveId(Long archiveId) {
-    this.archiveId = archiveId;
+  public UsercontollerGetUserGameArchiveResultModel userGameArchiveDTO(UsercontollerGetUserGameArchiveResultModelUserGameArchiveDTO userGameArchiveDTO) {
+    this.userGameArchiveDTO = userGameArchiveDTO;
     return this;
   }
 
    /**
-   * 存档ID
-   * @return archiveId
+   * Get userGameArchiveDTO
+   * @return userGameArchiveDTO
   **/
-  public Long getArchiveId() {
-    return archiveId;
+  public UsercontollerGetUserGameArchiveResultModelUserGameArchiveDTO getUserGameArchiveDTO() {
+    return userGameArchiveDTO;
   }
 
-  public void setArchiveId(Long archiveId) {
-    this.archiveId = archiveId;
-  }
-
-  public UsercontollerGetUserGameArchiveResultModel model(UsercontollerGetUserGameArchiveResultModelModel model) {
-    this.model = model;
-    return this;
-  }
-
-   /**
-   * Get model
-   * @return model
-  **/
-  public UsercontollerGetUserGameArchiveResultModelModel getModel() {
-    return model;
-  }
-
-  public void setModel(UsercontollerGetUserGameArchiveResultModelModel model) {
-    this.model = model;
+  public void setUserGameArchiveDTO(UsercontollerGetUserGameArchiveResultModelUserGameArchiveDTO userGameArchiveDTO) {
+    this.userGameArchiveDTO = userGameArchiveDTO;
   }
 
 
@@ -108,13 +88,12 @@ public class UsercontollerGetUserGameArchiveResultModel implements Serializable 
     UsercontollerGetUserGameArchiveResultModel usercontollerGetUserGameArchiveResultModel = (UsercontollerGetUserGameArchiveResultModel) o;
     return Objects.equals(this.downloadUrl, usercontollerGetUserGameArchiveResultModel.downloadUrl) &&
         Objects.equals(this.objectMD5, usercontollerGetUserGameArchiveResultModel.objectMD5) &&
-        Objects.equals(this.archiveId, usercontollerGetUserGameArchiveResultModel.archiveId) &&
-        Objects.equals(this.model, usercontollerGetUserGameArchiveResultModel.model);
+        Objects.equals(this.userGameArchiveDTO, usercontollerGetUserGameArchiveResultModel.userGameArchiveDTO);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(downloadUrl, objectMD5, archiveId, model);
+    return Objects.hash(downloadUrl, objectMD5, userGameArchiveDTO);
   }
 
 
@@ -125,8 +104,7 @@ public class UsercontollerGetUserGameArchiveResultModel implements Serializable 
     
     sb.append(",downloadUrl: ").append(toIndentedString(downloadUrl));
     sb.append(",objectMD5: ").append(toIndentedString(objectMD5));
-    sb.append(",archiveId: ").append(toIndentedString(archiveId));
-    sb.append(",model: ").append(toIndentedString(model));
+    sb.append(",userGameArchiveDTO: ").append(toIndentedString(userGameArchiveDTO));
     sb.append("}");
     return sb.toString();
   }
