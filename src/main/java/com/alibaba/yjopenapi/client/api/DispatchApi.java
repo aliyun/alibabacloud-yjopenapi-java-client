@@ -23,6 +23,7 @@ import com.alibaba.yjopenapi.client.model.StopGameResult;
 import com.alibaba.yjopenapi.client.model.StopPreopenContainerResult;
 import com.alibaba.yjopenapi.client.model.TryToGetSlotFormsStartParam;
 import com.alibaba.yjopenapi.client.model.TryToGetSlotResult;
+import com.alibaba.yjopenapi.client.model.UpdatePreopenStrategyResult;
 
 import com.alibaba.yjopenapi.client.model.*;
 
@@ -1402,6 +1403,98 @@ public class DispatchApi {
 
         com.squareup.okhttp.Call call = tryToGetSlotValidateBeforeCall(varForms);
         apiClient.executeAsync(call, TryToGetSlotResult.class, callback);
+        return call;
+    }
+    /**
+     * Build call for updatePreopenStrategy
+     * @param varForms UpdatePreopenStrategyForms
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call updatePreopenStrategyCall(UpdatePreopenStrategyForms varForms) throws ApiException {
+        
+        // create path and map variables
+        String localVarPath = "/updatePreopenStrategy";
+
+        Map<String, String> localVarQueryParams = new HashMap<String, String>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        localVarFormParams.put("appKey", varForms.getAppKey());
+        localVarFormParams.put("gameId", varForms.getGameId());
+        if (varForms.getPreStartCmd() != null) {
+            localVarFormParams.put("preStartCmd", varForms.getPreStartCmd());
+        }
+
+        final List<String> localVarAccepts = Arrays.asList(
+            "application/json"
+        );
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final List<String> localVarContentTypes = Arrays.asList(
+            "application/x-www-form-urlencoded"
+        );
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String path = configuration.getScheme() + "://" + configuration.getHost() + localVarPath;
+        return apiClient.buildCall(path, "POST", localVarQueryParams, localVarHeaderParams, localVarFormParams, configuration);
+    }
+    
+    private com.squareup.okhttp.Call updatePreopenStrategyValidateBeforeCall(UpdatePreopenStrategyForms varForms) throws ApiException {
+        // verify the required parameter 'appKey' is set
+        if (varForms.getAppKey() == null) {
+            throw new ApiException("Missing the required parameter 'appKey' when calling updatePreopenStrategy(Async)");
+        }
+        // verify the required parameter 'gameId' is set
+        if (varForms.getGameId() == null) {
+            throw new ApiException("Missing the required parameter 'gameId' when calling updatePreopenStrategy(Async)");
+        }
+        
+        com.squareup.okhttp.Call call = updatePreopenStrategyCall(varForms);
+        return call;
+    }
+
+    /**
+     * 
+     * 更新预开预起策略
+     * @param varForms UpdatePreopenStrategyForms
+     * @return UpdatePreopenStrategyResult
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public UpdatePreopenStrategyResult updatePreopenStrategy(UpdatePreopenStrategyForms varForms) throws ApiException {
+        ApiResponse<UpdatePreopenStrategyResult> resp = updatePreopenStrategyWithHttpInfo(varForms);
+        return resp.getData();
+    }
+
+    /**
+     * 
+     * 更新预开预起策略
+     * @param varForms UpdatePreopenStrategyForms
+     * @return ApiResponse&lt;UpdatePreopenStrategyResult&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<UpdatePreopenStrategyResult> updatePreopenStrategyWithHttpInfo(UpdatePreopenStrategyForms varForms) throws ApiException {
+        com.squareup.okhttp.Call call = updatePreopenStrategyValidateBeforeCall(varForms);
+        return apiClient.execute(call, UpdatePreopenStrategyResult.class);
+    }
+
+    /**
+     *  (asynchronously)
+     * 更新预开预起策略
+     * @param varForms UpdatePreopenStrategyForms
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call updatePreopenStrategyAsync(UpdatePreopenStrategyForms varForms, final ApiCallback<UpdatePreopenStrategyResult> callback) throws ApiException {
+
+        com.squareup.okhttp.Call call = updatePreopenStrategyValidateBeforeCall(varForms);
+        apiClient.executeAsync(call, UpdatePreopenStrategyResult.class, callback);
         return call;
     }
 }

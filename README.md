@@ -18,7 +18,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.alibaba</groupId>
   <artifactId>alibabacloud-yjopenapi-java-client</artifactId>
-  <version>1.0.20230810</version>
+  <version>1.0.20230829</version>
 </dependency>
 
 or
@@ -26,7 +26,7 @@ or
 <dependency>
     <groupId>com.alibaba</groupId>
     <artifactId>alibabacloud-yjopenapi-java-client</artifactId>
-    <version>1.0.20230810</version>
+    <version>1.0.20230829</version>
     <classifier>shaded</classifier>
     <exclusions>
         <exclusion>
@@ -109,6 +109,7 @@ try {
  | *DispatchApi* | **stopGame** | *stopGameForms*  | *StopGameResult* | 服务端发起，停止某个用户的某个游戏的某个会话 |
  | *DispatchApi* | **stopPreopenContainer** | *stopPreopenContainerForms*  | *StopPreopenContainerResult* | 停止预开容器 |
  | *DispatchApi* | **tryToGetSlot** | *tryToGetSlotForms*  | *TryToGetSlotResult* | 为用户调度分配游戏容器，容器一旦分配成功会被锁住，一段时间内不再分配给其他用户，过期释放。 |
+ | *DispatchApi* | **updatePreopenStrategy** | *updatePreopenStrategyForms*  | *UpdatePreopenStrategyResult* | 更新预开预起策略 |
  | *InteractiveApi* | **getParty** | *getPartyForms*  | *InteractiveGetPartyResult* | 获取派对 |
  | *InteractiveApi* | **getPartyStatus** | *getPartyStatusForms*  | *InteractiveGetPartyStatusResult* | 查询派对游戏状态 |
  | *InteractiveApi* | **joinParty** | *joinPartyForms*  | *InteractiveJoinPartyResult* | 加入分配席位 |
